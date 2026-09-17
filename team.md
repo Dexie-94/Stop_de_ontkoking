@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Stop_de_ontkoking
-DDL 
-sdc
-=======
 # Team Charter: [Naam DDL] 
  
 ## 1. Onze Ambitie 
@@ -39,4 +34,3 @@ tijdens werkdagen]
 * Wat gebeurt er als iemand afspraken structureel niet nakomt? 
   * *[Bijv: 1e keer = feedback in stand-up. 2e keer = waarschuwing. 3e
 keer = Docent inlichten.]*
->>>>>>> c8ed83f4f7f5b3a325711d77859cd61145c88e55
