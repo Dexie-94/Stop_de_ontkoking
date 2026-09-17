@@ -1,4 +1,4 @@
-# Team Charter: [Naam Agency] 
+# Team Charter: [Naam DDL] 
  
 ## 1. Onze Ambitie 
 * [Wat willen jullie als team bereiken qua cijfer en leermomenten?] 
