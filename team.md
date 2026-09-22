@@ -1,7 +1,8 @@
 # Team Charter: [Naam DDL] 
  
 ## 1. Onze Ambitie 
-* [Wat willen jullie als team bereiken qua cijfer en leermomenten?] 
+* [Wat willen jullie als team bereiken qua cijfer en leermomenten?]
+Wij willen mooie voldoendes en geen ai gebruiken en elkaar goed ondersteunen als team. 
  
 ## 2. Rol- en Taakverdeling 
 *Iedereen schrijft code en ontwerpt, maar de Leads hakken de knopen door
