@@ -31,6 +31,7 @@
 
 * Hamburger menu
 * Local session gebruiken om terug te halen
+* Zoek balk
 
 
 **Won't Haves (Buiten scope):**

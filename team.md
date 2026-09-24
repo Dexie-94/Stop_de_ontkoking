@@ -5,16 +5,16 @@
 Wij willen mooie voldoendes en geen ai gebruiken en elkaar goed ondersteunen als team. 
  
 ## 2. Rol- en Taakverdeling 
-*Iedereen schrijft code en ontwerpt, maar de Leads hakken de knopen door
-bij twijfel.* 
+*Destiny is onze hoofd leider en scrummaster Ze zorgt voor de planning dat wij goed voorlopen en helpt mee om meer inzicht te krijgen in het ontwerp en andere een beetje aan te sturen zelf zal ze tailwind gebruiken om alles mooi en kort te krijgen met een responsive design.* 
 * **Scrum Master:** [Destiny] *(Verantwoordelijk voor Stand-ups, GitHub
 Projects board en communicatie)* 
-* **Lead Design:** [Lalo] *(Bewaakt visuele stijl en UI/UX keuzes)* 
-* **Lead Git/Dev:** [Daniel] *(Bewaakt code quality en let streng op PR's)* 
+* **Lead Design:** [Daniel] *(Bewaakt visuele stijl en UI/UX keuzes)* 
+* **Lead Git/Dev:** [Mees] *(Bewaakt code quality en let streng op PR's)* 
+* **Lead ...:** [Lalo] *(Support het team)* 
  
 ## 3. GitHub & Code Afspraken 
 * **Branching:** Niemand commit rechtstreeks naar `main`. We werken via
-branches. 
+branches. Mocht er niemand De code kunnen bekijken van de admin (Destiny) dan kan zij er nog in om toch te mergen. 
 * **Pull Requests (PR):** Een PR mag pas worden gemerged als minimaal 1
 ander teamlid een "Approve" (Code Review) heeft gegeven. 
  
@@ -22,11 +22,11 @@ ander teamlid een "Approve" (Code Review) heeft gegeven.
 *Fast-forward naar week 7: het project is genadeloos gefaald. Wat ging er
 mis en hoe voorkomen we dit nu al?* 
 * **Risico 1:** [Bijv: We liepen vast op technische obstakels] 
-  * *Oplossing vooraf:* [Bijv: We vragen de docent na 1 uur vastlopen om
+  * *Oplossing vooraf:* [We vragen de docent na 1 uur vastlopen om
 hulp, niet pas aan het eind van de week] 
 * **Risico 2:** [Bijv: Slechte bereikbaarheid van teamleden buiten de
 les] 
-  * *Oplossing vooraf:* [Bijv: Responstijd via Teams is maximaal 4 uur
+  * *Oplossing vooraf:* [Responstijd via Teams is maximaal 4 uur
 tijdens werkdagen] 
 * **Risico 3:** [Eigen risico] 
   * *Oplossing vooraf:* [Eigen oplossing] 
