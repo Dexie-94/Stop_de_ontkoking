@@ -3,11 +3,11 @@
 ## 1. Doelgroeponderzoek
 
 * **Wie is onze gebruiker?:** 
-*[GEN Z zijn mensen die lui overkomen en erg verwend door ouders ook vanwege dat ze thuis wonen en niet gestimuleerd worden in koken.]*
+*[GEN Z zijn mensen die lui overkomen en erg verwend door ouders zijn, ook vanwege dat ze thuis wonen en niet gestimuleerd worden in koken.]*
 * **Pijnpunten (Pains):**
 *[Geen tijd om eten te maken en veel studeren ook de kosten voor buiten eten zijn veelste duur voor een student.]*
 * **Behoeftes (Gains):**
-*[Willen gezond eten maken maar je moet niet te veel ingredienten hebben.]*
+*[Willen gezond eten maken maar je moet niet te veel ingredienten hebben En het moet makkelijk zijn.]*
 
 ## 2. Empathy Map (Visueel)
 *Onze persoon heet Stefan en hij is 18 jaar oud leeft nog thuis en zegt dat hij bezig is terwijl dat eigenlijk wel meevalt zijn ouders zouden er graag*
@@ -25,5 +25,5 @@
 *Wat is het belangrijkste inzicht dat we meenemen naar de Define fase?*
 
 
-*[Beter het probleem onder ogen zien met daarin een oplossing ombeter te weten wat wij moeten maken en waar onze aandacht naartoe gaat.]*
+*[Beter het probleem onder ogen zien met daarin een oplossing om beter te weten wat wij moeten maken en waar onze aandacht naartoe gaat.]*
 

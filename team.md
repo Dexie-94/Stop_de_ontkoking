@@ -5,9 +5,8 @@
 Wij willen mooie voldoendes en geen ai gebruiken en elkaar goed ondersteunen als team. 
  
 ## 2. Rol- en Taakverdeling 
-*Destiny is onze hoofd leider en scrummaster Ze zorgt voor de planning dat wij goed voorlopen en helpt mee om meer inzicht te krijgen in het ontwerp en andere een beetje aan te sturen zelf zal ze tailwind gebruiken om alles mooi en kort te krijgen met een responsive design.* 
-* **Scrum Master:** [Destiny] *(Verantwoordelijk voor Stand-ups, GitHub
-Projects board en communicatie)* 
+*Destiny is onze hoofd leider en scrummaster Zij zorgt voor de planning dat wij goed voorlopen en helpt mee om meer inzicht te krijgen in het ontwerp en andere een beetje aan te sturen zelf zal ze tailwind gebruiken om alles mooi en kort te krijgen met een responsive design.* 
+* **Scrum Master:** [Destiny] *(Verantwoordelijk voor Stand-ups, GitHub Projects board en communicatie)* 
 * **Lead Design:** [Daniel] *(Bewaakt visuele stijl en UI/UX keuzes)* 
 * **Lead Git/Dev:** [Mees] *(Bewaakt code quality en let streng op PR's)* 
 * **Lead ...:** [Lalo] *(Support het team)* 
