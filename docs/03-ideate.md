@@ -25,11 +25,11 @@ om vraagt.
 
 ## 3. User Flow (Visueel)
 
-![User Flow Diagram](../assets/user-flow.png)
+![User Flow Diagram](../assets/MeesUsediagram.png)
 
   
 
-### **04-prototype.md**
+
 
   
 
