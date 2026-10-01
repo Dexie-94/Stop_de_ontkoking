@@ -29,7 +29,7 @@
 
 **Could Haves:**
 
-* Hamburger menu
+* Hamburger menu voor mobiel
 * Local session gebruiken om terug te halen
 * Zoek balk
 

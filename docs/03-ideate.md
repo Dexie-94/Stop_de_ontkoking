@@ -21,15 +21,18 @@ om vraagt.
 
 *Welk concept gaan we bouwen en waarom sluit dit het beste aan bij de PvE uit de Define fase?*
 
-  
-
-## 3. User Flow (Visueel)
+## 3. Ons moodboard
+![Ons Moodboard](../assets/Moodboard.png)
+## 4. Onze style guide
+*De kleuren op achtergrond moet licht zijn dat laat je site er fris uit zien als je donkere foto's van maaltijden erop zet. Ook de style van ons logo de font maakt het strak en harder met voor de rest van de pagina een iets sierlijke font die soepeler staat.*
+*Wij willen de kleur groen terug laten komen van natuurlijk in het logo en de knoppen. Wij willen strakke zwarte lijnen terug laten komen om de site zo professioneel mogelijk te maken.*
+## 5. User Flow (Visueel)
 
 ![User Flow Diagram](../assets/MeesUsediagram.png)
 
-  
+## 5. site map (technisch)
 
+![Site map concept 1](../assets/concept1.png)
 
-
-  
+![Site map concept 2](../assets/concept2.png)
 

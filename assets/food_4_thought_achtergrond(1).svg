@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBF7EE"/>
+      <stop offset="55%" stop-color="#F7F1E5"/>
+      <stop offset="100%" stop-color="#F4EDDF"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#FFFDF7" stop-opacity=".65"/>
+      <stop offset="100%" stop-color="#FFFDF7" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+
+    <g id="leaf">
+      <path d="M0 90 C18 55 43 27 78 0 C72 39 55 70 0 90Z"
+            fill="#5B7658" opacity=".72"/>
+      <path d="M5 86 C25 61 47 35 73 8"
+            fill="none" stroke="#304D36" stroke-width="2" opacity=".55"/>
+      <path d="M22 66 C18 51 19 38 23 27 M38 48 C36 34 39 23 45 14 M53 32 C54 22 59 13 66 6"
+            fill="none" stroke="#304D36" stroke-width="1.5" opacity=".38"/>
+    </g>
+
+    <g id="leafCluster">
+      <use href="#leaf" transform="rotate(-34) scale(.75)"/>
+      <use href="#leaf" transform="translate(28,-8) rotate(-8) scale(.62)"/>
+      <use href="#leaf" transform="translate(55,8) rotate(25) scale(.52)"/>
+    </g>
+  </defs>
+
+  <!-- Main background -->
+  <rect width="1536" height="1024" fill="url(#bg)"/>
+  <rect width="1536" height="1024" fill="url(#glow)"/>
+
+  <!-- Very subtle paper-like atmosphere -->
+  <ellipse cx="770" cy="310" rx="560" ry="360" fill="#FFFFFF" opacity=".20" filter="url(#blur)"/>
+  <ellipse cx="250" cy="760" rx="330" ry="250" fill="#E8DCC8" opacity=".12" filter="url(#blur)"/>
+  <ellipse cx="1320" cy="700" rx="300" ry="260" fill="#E6D9C5" opacity=".10" filter="url(#blur)"/>
+
+  <!-- Organic botanical accent, top-right -->
+  <g transform="translate(1275 92)">
+    <use href="#leafCluster" transform="scale(1.05)"/>
+  </g>
+
+  <!-- Terracotta organic accent, top-right -->
+  <path d="M1392 112
+           C1425 86 1475 91 1498 118
+           C1520 145 1503 179 1468 191
+           C1430 204 1389 184 1382 153
+           C1378 136 1382 121 1392 112Z"
+        fill="#D9824B" opacity=".92"/>
+
+  <!-- Small faded organic shapes for depth -->
+  <path d="M42 250 C63 223 105 216 128 236 C150 255 143 287 116 299 C83 313 43 294 36 270 C33 263 36 256 42 250Z"
+        fill="#D9824B" opacity=".055"/>
+  <path d="M1380 570 C1410 536 1464 535 1492 563 C1518 589 1507 628 1471 642 C1432 657 1387 637 1377 606 C1372 591 1374 580 1380 570Z"
+        fill="#557252" opacity=".045"/>
+
+  <!-- Botanical accent, bottom-left -->
+  <g transform="translate(18 920) rotate(12) scale(.72)" opacity=".62">
+    <use href="#leafCluster"/>
+  </g>
+
+  <!-- Terracotta accent, bottom-right -->
+  <path d="M1474 918
+           C1504 895 1537 901 1554 925
+           C1571 950 1558 982 1530 994
+           C1501 1007 1467 990 1459 964
+           C1454 946 1460 929 1474 918Z"
+        fill="#D9824B" opacity=".76"/>
+
+  <!-- Soft edge shading -->
+  <rect x="0" y="0" width="1536" height="1024" fill="none" stroke="#E5DCCB" stroke-width="2" opacity=".55"/>
+</svg>

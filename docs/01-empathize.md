@@ -10,7 +10,7 @@
 *[Willen gezond eten maken maar je moet niet te veel ingredienten hebben En het moet makkelijk zijn.]*
 
 ## 2. Empathy Map (Visueel)
-*Onze persoon heet Stefan en hij is 18 jaar oud leeft nog thuis en zegt dat hij bezig is terwijl dat eigenlijk wel meevalt zijn ouders zouden er graag*
+*Onze persoon heet Stefan en hij is 18 jaar oud( want de meeste mensen van 18 jaar zouden nu wel beginnen met hun eigen leven opbouwen) leeft nog thuis en zegt dat hij bezig is terwijl dat eigenlijk wel meevalt zijn ouders zouden er graag*
 
 *voor hem willen zijn maar het contact is er matig. Hij Is graag bij vrienden en houden van uitgaan zelf ziet hij wel in dat hij als student weinig geld heeft en wilt sparen voor zijn toekomst ook dat hij zijn lichaam voorop moet zetten en gezonder zou moeten eten en niet weet waar hij moet beginnen.* 
 
