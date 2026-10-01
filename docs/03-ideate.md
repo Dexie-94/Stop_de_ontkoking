@@ -19,7 +19,7 @@ om vraagt.
 
 ## 2. Conceptkeuze & Onderbouwing
 
-*Welk concept gaan we bouwen en waarom sluit dit het beste aan bij de PvE uit de Define fase?*
+Beide concepten maken gebruik van PHP en een database om te functioneren. Een van de twee concepten maakt gebruik van een searchbar en een accountsysteem. Beide concepten maken gebruik van een CRUD-systeem in de site en een overviewpagina met daarbij een detailpagina die verandert met elk ID dat jij klikt op de overviewpagina.
 
 ## 3. Ons moodboard
 ![Ons Moodboard](../assets/Moodboard.png)
