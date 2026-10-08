@@ -1,0 +1,54 @@
+<div class="max-w-6xl mx-auto px-2 py-10">
+      <?php
+          if ($aantalrecepten > 0) { ?>
+              <?php foreach ($recepten as $recept) { ?>
+      <h1
+        class="text-center text-[#C8FAF7] sky-bg text-[clamp(1.9rem,4vw,5rem)]">
+        <?= $recept['naamrecept'] ?>
+      </h1>
+      <div class="w-[100%] mx-auto h-[3px] bg-white/30 mt-4"></div>
+    </div>
+  
+    
+
+    
+      <h1 class="text-orange-400 mb-4  mx-12 sky-bg text-[clamp(1.9rem,3vw,4rem)]">
+        <?= $recept['beschrijving']?> <span>om</span> <?=$recept['tijd'] ?></h1>
+
+      <div
+        class="grid font-band mx-auto grid-cols-1 md:grid-cols-1 xl:grid-cols-2 mb-[5%]  gap-10 "
+      >
+        <div
+          class="flex justify-center px-6 mt-8 w-full md:w-full lg:w-full"
+        >
+          <img
+            src="<?= $recept['recept_image']?>"
+            alt="Festival"
+            class="rounded-3xl shadow-2xl filter1 my-4 xs:max-w-2xl xl:max-w-4xl kleuren1 p-3"
+          />
+        </div> 
+      
+      <div
+          class="bg-orange-200/50 border border-orange-300 mx-8  text-[clamp(0.9rem,2vw,1.4rem)]  font-medium rounded-xl p-6  px-4 py-6 shadow "
+        >
+          <h3 class="text-[clamp(1rem,2.5vw,2rem)] pt-2 font-bold">
+            Wie is <?= $recept['NAAM'] ?>?
+          </h3>
+          <p class="mt-4 text-[clamp(0.5rem,2vw,1rem)]">
+            <?php 
+              $list = explode("/", $recept['INFO']);
+              foreach ($list as $item) { ?>
+              <p><?= htmlspecialchars(trim($item)) ?></p>
+            <?php } ?>
+          </p>
+        </div>
+        
+        </div>
+        
+    </div>
+    
+  </div>
+  <?php } ?>
+          <?php } else { ?>
+              <p>Geen resultaten gevonden</p>
+          <?php } ?>
