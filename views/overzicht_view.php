@@ -120,5 +120,7 @@
         <br /><br /><br />&copy;Food 4 Thought 2026
       </p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   </body>
 </html>
