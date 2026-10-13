@@ -96,7 +96,7 @@
           class="bg-orange-200/50 border border-orange-300 mx-8  text-[clamp(0.9rem,2vw,1.4rem)]  font-medium rounded-xl p-6  px-4 py-6 shadow "
         >
           <h3 class="text-[clamp(1rem,2.5vw,2rem)] pt-2 font-bold">
-            Wie is ...?
+            Wie is ...?.
           </h3>
           <p class="mt-4 text-[clamp(0.5rem,2vw,1rem)]">
           </p>
@@ -120,5 +120,9 @@
         <br /><br /><br />&copy;Food 4 Thought 2026
       </p>
     </footer>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
   </body>
 </html>
