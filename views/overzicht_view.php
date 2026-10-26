@@ -45,20 +45,36 @@
     body::selection {
       color: #cb6526;
     }
-
+    .achter{
+        background-image: url(../assets/achtergrong.png);
+        
+        background-position: center ;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .whiteshadow {
       filter: drop-shadow(0 0 15px white);
       width: 150px;
       height: auto;
     }
+    .beneden{
+       margin-top: auto;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    }
+    .filter1{
+        filter:drop-shadow(1px 1px 1px white);
+    }
   </style>
 </head>
 
 <body
-  class="min-h-screen achtergrond  flex flex-col "
+  class="min-h-screen achter flex flex-col "
   >
   <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-white/40 backdrop-blur-xs sticky top-0 z-50">
+    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
     <!--<div
         class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
@@ -77,7 +93,7 @@
     <img src="../assets/food4thought.svg" alt="logo" class="whiteshadow" />
 
     <a
-      href="./view.php"
+      href="../beheerpagina.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
          [mask-image:url('../assets/hat-chef-svgrepo-com.svg')]
@@ -97,9 +113,9 @@
   <!-- header -->
   <div class="max-w-[100%] px-12 py-8">
     <h1
-      class="text-gray-900  recept text-[clamp(2rem,3vw,3rem)]"> Recepten
+      class="text-gray-900 filter1 recept text-[clamp(2rem,3vw,3rem)]"> Recepten
     </h1>
-    <h1 class="tekst text-green-900 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
+    <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
   </div>
 
   <div class="grid gap-6 px-12  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
@@ -171,7 +187,7 @@
   </div>
 
   <footer
-    class="max-w-full mx-auto font-semibold bg-oklch(27.4% 0.072 132.109) w-full s sm:mt-4 bottom-0 left-0 right-0">
+    class="max-w-full beneden mx-auto font-semibold bg-oklch(27.4% 0.072 132.109) w-full s sm:mt-4 bottom-0 left-0 right-0">
     <p
       class="text-[clamp(1.15rem,1.5vw,1.5rem)] flex justify-center text-green-900">
       <br /><br /><br />&copy;Food 4 Thought 2026
