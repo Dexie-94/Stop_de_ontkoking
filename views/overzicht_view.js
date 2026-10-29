@@ -25,4 +25,4 @@ gsap.from(".card", {
     duration: 1,
     ease: "power2.out",
     stagger: 0.1
-  });
+  }); // animatie voor heel de site
