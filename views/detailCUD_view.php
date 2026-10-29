@@ -221,7 +221,11 @@
 
 
 <div class="flex justify-around mt-12 max-w-[100%]">
-    <a href="../overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst">Terug</a>
+    <a href="../overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
+         [mask-image:url('../assets/flip-backward-svgrepo-com.svg')]
+         [mask-size:contain]
+         [mask-repeat:no-repeat]
+         [mask-position:start] "></span> Terug</a>
     <a href="../create.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst">
         <span class="h-10 bg-white w-12 text-red-900  cursor-pointer
          [mask-image:url('../assets/plus-svgrepo-com.svg')]
