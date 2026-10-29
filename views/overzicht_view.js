@@ -19,3 +19,10 @@ gsap.from(".card", {
   opacity: 0,
   stagger: { each: 0.1, from: "center", grid: "auto" },
 });
+
+ gsap.from("body *", {
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1
+  });
