@@ -65,3 +65,37 @@
           <?php } else { ?>
               <p>Geen resultaten gevonden</p>
           <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <ul class="ingredientenul">
+            <?php 
+              $list = explode(",", $recept['ingredienten']);
+              foreach ($list as $item) { ?>
+              <li><?= htmlspecialchars(trim($item)) ?></li>
+            <?php } ?>
+          </ul>

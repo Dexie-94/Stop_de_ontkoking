@@ -67,6 +67,13 @@
     .filter1{
         filter:drop-shadow(1px 1px 1px white);
     }
+
+    .hoverknop:hover{
+      scale: (1.5);
+  background-color: #cb6526;
+  transition: background-color 1s ease-in-out, transform 1s ease-out;
+  transition: scale 1s ease-in;
+    }
   </style>
 </head>
 
@@ -167,7 +174,7 @@
 
 
           <div class="flex">
-            <a href="./overzicht.php" class="h-12 w-12 bg-green-900 cursor-pointer
+            <a href="../detail.php" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
          [mask-image:url('../assets/round-arrow-right-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
