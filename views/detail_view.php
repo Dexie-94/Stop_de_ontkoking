@@ -9,7 +9,10 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
-
+  <script src="overzicht_view.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
+  
   <style>
     @font-face {
       font-family: recept;
