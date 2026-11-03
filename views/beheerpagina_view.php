@@ -80,6 +80,12 @@
     .filter1{
         filter:drop-shadow(1px 1px 1px white);
     }
+    .hoverknop:hover{
+      scale: (1.5);
+  background-color: #cb6526;
+  transition: background-color 1s ease-in-out, transform 1s ease-out;
+  transition: scale 1s ease-in;
+    }
   </style>
     
 <body
@@ -156,9 +162,9 @@
         <input class="border-gray-700 border-2 m-4" name="wachtwoord" type="password"><br>
 
         <div class="grid grid-cols-1-xl justify-center items-center mt-12">
-        <input type="button" value="Ga verder" class="bg-green-900 text-white p-4 rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst "><br>
+        <a href="../detailCUD.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst ">Ga verder</a><br>
         
-        <div><a href="#" class="text-blue-800 hoverrood">Wachtwoord vergeten</a><span class="text-blue-800">/</span><a href="#" class="text-blue-800 hoverrood">Aanmelden</a></div>
+        <div><a href="" class="text-blue-800 hoverrood">Wachtwoord vergeten</a><span class="text-blue-800">/</span><a href="#" class="text-blue-800 hoverrood">Aanmelden</a></div>
         </div>
     </form>
         </div>

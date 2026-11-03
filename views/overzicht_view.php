@@ -70,6 +70,13 @@
     .filter1{
         filter:drop-shadow(1px 1px 1px white);
     }
+
+    .hoverknop:hover{
+      scale: (1.5);
+  background-color: #cb6526;
+  transition: background-color 1s ease-in-out, transform 1s ease-out;
+  transition: scale 1s ease-in;
+    }
   </style>
 </head>
 
@@ -170,7 +177,7 @@
 
 
           <div class="flex">
-            <a href="./overzicht.php" class="h-12 w-12 bg-green-900 cursor-pointer
+            <a href="../detail.php" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
          [mask-image:url('../assets/round-arrow-right-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
@@ -185,7 +192,7 @@
 
 
 
-<!-- aaa -->
+
 
   </div>
     
@@ -193,14 +200,12 @@
 
 
     <footer
-      class="max-w-full border-t border-gray-300/70 mx-auto px-9 pt-4 w-full bg-[#fcc977]/50 backdrop-blur-xs sm:mt-4 bottom-0 left-0 right-0"
-    >
-      <p
-        class="text-[clamp(0.875rem,1.5vw,1.125rem)] flex justify-center text-gray-900"
-      >
-        <br /><br /><br />&copy;Food 4 Thought 2026
-      </p>
-    </footer>
+    class="max-w-full mx-auto font-semibold bg-oklch(27.4% 0.072 132.109) w-full  beneden sm:mt-4 bottom-0 left-0 right-0">
+    <p
+      class="text-[clamp(1.15rem,1.5vw,1.5rem)] flex justify-center text-green-900">
+      <br /><br /><br />&copy;Food 4 Thought 2026
+    </p>
+</footer>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
