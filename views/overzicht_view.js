@@ -20,6 +20,11 @@ gsap.from(".card", {
   stagger: { each: 0.1, from: "center", grid: "auto" },
 });
 
+gsap.from(".recept", {
+  skewX: 30, x: -100, opacity: 0,
+  duration: 1, ease: "power3.out"
+});
+
  gsap.from("body *", {
     opacity: 0,
     duration: 1,
