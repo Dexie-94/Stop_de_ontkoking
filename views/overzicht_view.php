@@ -125,7 +125,7 @@
     <h1
       class="text-gray-900 filter1 recept text-[clamp(2rem,3vw,3rem)]"> Recepten
     </h1>
-    <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
+    <h1 class="tekst sub-recept text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
   </div>
 
   <div class="grid gap-6 px-12  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
