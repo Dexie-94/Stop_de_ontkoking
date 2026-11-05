@@ -34,7 +34,7 @@ if (sessionStorage.cover) {            // nieuwe pagina: oranje vlak fadet weg
   gsap.delayedCall(.4, start);
 } else {                               // laad animatie
   const l = div({ background: "#fcf7f0", display: "flex", alignItems: "center", justifyContent: "center", ...vol });
-  l.innerHTML = '<img src="../assets/food4thought.svg" width="150">';
+  l.innerHTML = '<img src="./assets/food4thought.svg" width="150">';
   const puls = gsap.to(l.firstChild, { scale: 1.2, opacity: .5, duration: .5, repeat: -1, yoyo: true });
   addEventListener("load", () => gsap.delayedCall(.6, () => {
     puls.kill();
