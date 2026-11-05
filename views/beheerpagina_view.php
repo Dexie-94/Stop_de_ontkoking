@@ -26,7 +26,7 @@
       font-family: recept;
     }
     .achter{
-        background-image: url(../assets/achtergrong.png);
+        background-image: url(./assets/achtergrong.png);
         
         background-position: center ;
         background-repeat: no-repeat;
@@ -67,7 +67,7 @@
         color: red;
     }
     .formulierbg{
-        background-image: url(../assets/achtergrond.svg);
+        background-image: url(./assets/achtergrond.svg);
         background-position: end;
         background-repeat: no-repeat;
     }
@@ -87,6 +87,17 @@
   transition: background-color 1s ease-in-out, transform 1s ease-out;
   transition: scale 1s ease-in;
     }
+    .form-row {
+        display: grid;
+        /*grid-template-columns: minmax(0, 180px) minmax(0, 150px);*/
+        align-items: center;
+        gap: 1px;
+    }
+
+    .form-row input {
+        width: 60%;
+        box-sizing: border-box;
+    }
   </style>
     
 <body
@@ -102,20 +113,20 @@
       href="./overzicht.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/home-1-svgrepo-com.svg')]
+         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-8 mx-auto"></div>
       <span class="text-green-900">Home</span>
     </a>
 
-    <img src="../assets/food4thought.svg" alt="logo" class="whiteshadow" />
+    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
     <a
-      href="../beheerpagina.php"
+      href="./beheerpagina.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/hat-chef-svgrepo-com.svg')]
+         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-12 mx-auto"></div>
@@ -152,7 +163,7 @@
         <h3 class="text-[clamp(1.4rem,2.5vw,2rem)] mb-6 tekst font-bold">
           Voer hier uw wachtwoord in
         </h3>
-        <form>
+        <form class="form-row ">
 
         <!-- mogelijk uncomment -->
 
@@ -163,7 +174,7 @@
         <input class="border-gray-700 border-2 m-4" name="wachtwoord" type="password"><br>
 
         <div class="grid grid-cols-1-xl justify-center items-center mt-12">
-        <a href="../detailCUD.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst ">Ga verder</a><br>
+        <a href="./detailCUD.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst ">Ga verder</a><br>
         
         <div><a href="" class="text-blue-800 hoverrood">Wachtwoord vergeten</a><span class="text-blue-800">/</span><a href="#" class="text-blue-800 hoverrood">Aanmelden</a></div>
         </div>

@@ -28,7 +28,7 @@
       font-family: recept;
     }
     .achter{
-        background-image: url(../assets/achtergrong.png);
+        background-image: url(./assets/achtergrong.png);
         
         background-position: center ;
         background-repeat: no-repeat;
@@ -75,7 +75,7 @@
   transition: scale 1s ease-in;
     }
     .formulierbg{
-        background-image: url(../assets/achtergrond.svg);
+        background-image: url(./assets/achtergrond.svg);
         background-position: end;
         background-repeat: no-repeat;
     }
@@ -113,20 +113,20 @@
       href="./overzicht.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/home-1-svgrepo-com.svg')]
+         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-8 mx-auto"></div>
       <span class="text-green-900">Home</span>
     </a>
 
-    <img src="../assets/food4thought.svg" alt="logo" class="whiteshadow" />
+    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
     <a
-      href="../beheerpagina.php"
+      href="./beheerpagina.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/hat-chef-svgrepo-com.svg')]
+         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-12 mx-auto"></div>
@@ -139,13 +139,16 @@
   
     <div class="grid  xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
 
+        <?php
+        if ($aantalrecepten > 0) { ?>
+        <?php foreach ($recepten as $recept) { ?>
     <div class="justify-items-center">
-    <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="../assets/csscardtest.png">
+    <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="<?= $recept['recept_image']?>">
     </div>
 
     <div class=" rounded shadow m-4  ">
-    <p class="text-[clamp(1.45rem,1.5vw,1.7rem)] font-bold recept flex mt-4 justify-center">receptnaam</p>
-    <p class="p-8">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, animi impedit provident tempore expedita, doloribus explicabo nesciunt illum quasi dolorem quae quaerat, amet sit quam unde nobis tenetur voluptatum dolor!</p>
+    <p class="text-[clamp(1.45rem,1.5vw,1.7rem)] font-bold recept flex mt-4 justify-center"><?= $recept['naamrecept'] ?></p>
+    <p class="p-8"><?=$recept['stappen'] ?></p>
     </div>
 
 
@@ -159,34 +162,38 @@
 
           <div class="flex mb-0">
             <div class=" h-7 w-7 bg-gray-900
-         [mask-image:url('../assets/clock-five-svgrepo-com.svg')]
+         [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2">20 min</p>
+            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?=$recept['tijd'] ?> min</p>
           </div>
 
           <div class="flex">
             <div class=" h-8 w-8 bg-green-900
-         [mask-image:url('../assets/leaf-icon.svg')]
+         [mask-image:url('./assets/leaf-icon.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">Vegan</p>
+            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont "><?php if($recept['vegan'] == 1){
+                    ?>Vegan <?php } else { ?> Niet vegan <?php } ?></p>
           </div>
 
           </div>
 
     </div>
 
-    
-    <ul >
-      <li class="iconblad text-gray-900">iets</li>
-      <li class="iconblad">iets</li>
-      <li ></li>
-    </ul>
+
+        <ul class="ingredientenul">
+            <?php
+            $list = explode("/", $recept['ingredienten']);
+            foreach ($list as $item) { ?>
+                <li class="iconblad text-gray-900"><?= htmlspecialchars(trim($item)) ?></li>
+            <?php } ?>
+        </ul>
+
 
           
 
@@ -196,8 +203,8 @@
 
 
     <div class="flex justify-center">
-    <a href="../overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop w-[10%] rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
-         [mask-image:url('../assets/flip-backward-svgrepo-com.svg')]
+    <a href="./overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop w-[10%] rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
+         [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></span> Terug</a>
@@ -208,7 +215,10 @@
 
 
 
-
+  <?php } ?>
+  <?php } else { ?>
+      <p>Geen resultaten gevonden</p>
+  <?php } ?>
 
 
 <footer

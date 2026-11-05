@@ -7,7 +7,7 @@
   <title>Food 4 Thought</title>
   <link rel="icon" type="image/svg+xml" href="../assets/food4thought_logo.png" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <script src="taliwind.config.js" defer></script>
   <script src="overzicht_view.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
@@ -49,7 +49,7 @@
       color: #cb6526;
     }
     .achter{
-        background-image: url(../assets/achtergrong.png);
+        background-image: url(./assets/achtergrong.png);
         
         background-position: center ;
         background-repeat: no-repeat;
@@ -90,23 +90,23 @@
         class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
       >-->
     <a
-      href="./overzicht.php"
+      href="#"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/home-1-svgrepo-com.svg')]
+         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-8 mx-auto"></div>
       <span class="text-green-900">Home</span>
     </a>
 
-    <img src="../assets/food4thought.svg" alt="logo" class="whiteshadow" />
+    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
     <a
-      href="../beheerpagina.php"
+      href="./beheerpagina.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/hat-chef-svgrepo-com.svg')]
+         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-12 mx-auto"></div>
@@ -128,74 +128,85 @@
     <h1 class="tekst sub-recept text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
   </div>
 
-  <div class="grid gap-6 px-12  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-    <!-- dit is de img -->
-    <div
-      class="grid font-band mx-auto border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
-      <div
-        class="flex justify-center  w-full md:w-md lg:w-lg">
-        <img
-          src="../assets/csscardtest.png"
-          alt="eten"
-          class="rounded-t-3xl " />
-      </div>
-      <!-- dit is de tekst -->
-      <div class=" px-4 py-4 ">
-
-        <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
-          Pasta uit de oven
-        </h3>
-        <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]">Simpele pasta met ketchup, kaas enplatte peterselie.<br> Lekker uit een ovenschaal.
-        </p>
-
-
-        <!-- dit zijn de icoontjes -->
-        <div class="grid grid-cols-[10rem_auto_3rem] mt-8">
-
-          <div class="flex mb-0">
-            <div class=" h-7 w-7 bg-gray-900
-         [mask-image:url('../assets/clock-five-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></div>
-
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2">20 min</p>
-          </div>
 
 
 
+  <div class="grid gap-6 px-auto  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
 
-          <div class="flex">
-            <div class=" h-8 w-8 bg-green-900
-         [mask-image:url('../assets/leaf-icon.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></div>
+      <?php
+      if ($aantalrecepten > 0) { ?>
+      <?php foreach ($recepten as $recept) { ?>
+   <div
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">Vegan</p>
-          </div>
+        class="grid font-band mx-auto  border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
+
+        <div
+          class="flex justify-center content-stretch  w-full  md:w-md lg:w-lg">
+          <img
+            src="<?= $recept['recept_image']?>"
+            alt="eten"
+            class=" rounded-t-3xl aspect-3/2  " />
+        </div>
+
+        <div class=" px-4 py-4 ">
+
+          <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
+            <?= $recept['naamrecept'] ?>
+          </h3>
+          <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]"><?= $recept['beschrijving']?></p>
 
 
-          <div class="flex">
-            <a href="../detail.php" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
-         [mask-image:url('../assets/round-arrow-right-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></a>
+          <div class="grid grid-cols-[10rem_auto_3rem] mt-8">
+
+            <div class="flex mb-0">
+              <div class=" h-7 w-7 bg-gray-900
+           [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></div>
+
+              <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?=$recept['tijd'] ?> min</p>
+            </div>
+
+
+
+
+            <div class="flex">
+              <div class=" h-8 w-8 bg-green-900
+           [mask-image:url('./assets/leaf-icon.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></div>
+
+              <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">
+                  <?php if($recept['vegan'] == 1){
+                  ?>Vegan <?php } else { ?> Niet vegan <?php } ?>
+              </p>
+            </div>
+
+            <div class="flex">
+              <a href="./detail.php?id=<?= $recept["ID"] ?>" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
+           [mask-image:url('./assets/round-arrow-right-svgrepo-com.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></a>
+            </div>
+
           </div>
 
         </div>
-      </div>
 
+
+   </div>
+          <?php } ?>
+      <?php } else { ?>
+          <p>Geen resultaten gevonden</p>
+      <?php } ?>
     </div>
-
-
-
-
-
-
-  </div>
     
+
+
+
 
 
 
