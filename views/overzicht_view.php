@@ -5,10 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food 4 Thought</title>
-  <link rel="icon" type="image/svg+xml" href="./assets/food4thought.svg" />
+  <link rel="icon" type="image/svg+xml" href="../assets/food4thought_logo.png" />
 
   <script src="https://cdn.tailwindcss.com" defer></script>
   <script src="taliwind.config.js" defer></script>
+  <script src="overzicht_view.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
   <style>
     @font-face {
@@ -122,7 +125,7 @@
     <h1
       class="text-gray-900 filter1 recept text-[clamp(2rem,3vw,3rem)]"> Recepten
     </h1>
-    <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
+    <h1 class="tekst sub-recept text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
   </div>
 
 
