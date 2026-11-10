@@ -2,6 +2,13 @@
 //ini_set('display_errors', 1);
 //error_reporting(E_ALL);
 
+//echo "<pre>";
+//print_r($_SERVER["REQUEST_METHOD"]);
+//print_r($_POST);
+//print_r($_FILES);
+//echo "</pre>";
+//exit;
+
 $resultaatfout='';
 $resultaatgoed='';
 
@@ -94,25 +101,55 @@ require './backend-des/includes/config.php';
 //                try {
 //var_dump($_POST);
 //var_dump($_FILES);
-                    // insert query in twee delen
-                    $query = "INSERT INTO koken( naamrecept, beschrijving, tijd, vegan, ingredienten, stappen)";
-                    $query .= " VALUES ( :naamrecept, :beschrijving, :tijd, :vegan, :ingredienten, :stappen)";
-                    // print_r($_POST);
-                    $resultaatfout = "";
-                    $resultaatgoed = "";
-                    // maak query klaar voor uitvoering
-                    $stmt = $PDO->prepare($query);
-                    // voer query uit
-                    $stmt->execute([
-                    // "recept_image" => $_POST["recept_image"],
-                        ":naamrecept" => $_POST["naamrecept"],
-                        ":beschrijving" => $_POST["beschrijving"],
-                        ":tijd" => $_POST["tijd"],
-                        "vegan" => isset($_POST["vegan"]) ? 1 : 0,
-                        //"vegan" => $_POST["vegan"],
-                        ":ingredienten" => $_POST["ingredienten"],
-                        ":stappen" => $_POST["stappen"],
-                    ]);
+// Image uploaden
+$imageName = "";
+$imageName = "";
+
+if (isset($_FILES["recept_image"]) && $_FILES["recept_image"]["error"] === UPLOAD_ERR_OK) {
+
+    $ext = pathinfo($_FILES["recept_image"]["name"], PATHINFO_EXTENSION);
+
+    $imageName = uniqid("recept_") . "." . $ext;
+
+    $target = __DIR__ . "/uploads/" . $imageName;
+
+    if (!move_uploaded_file($_FILES["recept_image"]["tmp_name"], $target)) {
+
+        die("Upload failed. Path: " . $target
+
+            . " | folder exists: " . (is_dir(__DIR__ . "/uploads") ? "yes" : "NO")
+
+            . " | writable: " . (is_writable(__DIR__ . "/uploads") ? "yes" : "NO"));
+
+    }
+
+} else {
+
+    die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
+
+}
+
+
+// insert query in twee delen
+                $query = "INSERT INTO koken (recept_image, naamrecept, beschrijving, tijd, vegan, ingredienten, stappen)";
+                $query .= " VALUES (:recept_image, :naamrecept, :beschrijving, :tijd, :vegan, :ingredienten, :stappen)";
+
+                $resultaatfout = "";
+                $resultaatgoed = "";
+
+                // maak query klaar voor uitvoering
+                $stmt = $PDO->prepare($query);
+
+                // voer query uit
+                $stmt->execute([
+                    ":recept_image" => $imageName,
+                    ":naamrecept" => $_POST["naamrecept"],
+                    ":beschrijving" => $_POST["beschrijving"],
+                    ":tijd" => $_POST["tijd"],
+                    ":vegan" => isset($_POST["vegan"]) ? 1 : 0,
+                    ":ingredienten" => $_POST["ingredienten"],
+                    ":stappen" => $_POST["stappen"],
+                ]);
 
                     $naamrecept = $_POST["naamrecept"];
 
@@ -138,4 +175,4 @@ require './backend-des/includes/config.php';
 //    $resultaatfout .= "Er is iets fout gegaan<br />";
 //}
 
- include 'detailCUD.php';
+ include './views/create_verwerk_view.php';

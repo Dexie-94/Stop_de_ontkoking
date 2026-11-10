@@ -158,9 +158,9 @@
         <div
           class="flex justify-center overflow-hidden  w-full  md:w-md lg:w-lg">
           <img
-            src="<?= $recept['recept_image']?>"
-            alt="eten"
-            class=" rounded-t-3xl aspect-3/2 h-60 w-full object-cover " />
+                  src="uploads/<?= htmlspecialchars($recept['recept_image']) ?>"
+                  alt="eten"
+                  class=" rounded-t-3xl aspect-3/2 h-60 w-full object-cover " />
         </div>
 
         <div class=" px-4 py-4 ">

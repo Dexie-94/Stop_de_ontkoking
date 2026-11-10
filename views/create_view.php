@@ -173,7 +173,7 @@ $_SESSION['token'] = $token;
 
 <div
         class="grid  mx-auto border-2 border-solid  shadow-xl p-5  rounded-3xl border-green-900/80 formulierbg">
-<form action="./create_verwerk.php" class="form-row grid aspect-2/4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 " method="POST">
+<form action="./create_verwerk.php" class="form-row grid aspect-2/4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 " method="POST" enctype="multipart/form-data">
     <!-- stop token in formulier om te vergelijken -->
 
     <input type="hidden" name="tokenVeld" value="<?= $token; ?>"/>
