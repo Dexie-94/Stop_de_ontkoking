@@ -213,7 +213,7 @@
 
       <ul class="ingredientenul">
           <?php
-          $list = explode("/", $recept['ingredienten']);
+          $list = explode("-", $recept['ingredienten']);
           foreach ($list as $item) { ?>
               <li><?= htmlspecialchars(trim($item)) ?></li>
           <?php } ?>

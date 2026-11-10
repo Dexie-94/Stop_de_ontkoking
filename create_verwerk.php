@@ -92,11 +92,11 @@ require './backend-des/includes/config.php';
             //}
 //            if ($resultaatfout == ''){
 //                try {
-var_dump($_POST);
-var_dump($_FILES);
+//var_dump($_POST);
+//var_dump($_FILES);
                     // insert query in twee delen
-                    $query = "INSERT INTO koken(recept_image, naamrecept, beschrijving, tijd, vegan, ingredienten, stappen)";
-                    $query .= " VALUES ('', :naamrecept, :beschrijving, :tijd, :vegan, :ingredienten, :stappen)";
+                    $query = "INSERT INTO koken( naamrecept, beschrijving, tijd, vegan, ingredienten, stappen)";
+                    $query .= " VALUES ( :naamrecept, :beschrijving, :tijd, :vegan, :ingredienten, :stappen)";
                     // print_r($_POST);
                     $resultaatfout = "";
                     $resultaatgoed = "";
@@ -104,7 +104,7 @@ var_dump($_FILES);
                     $stmt = $PDO->prepare($query);
                     // voer query uit
                     $stmt->execute([
-//                        "recept_image" => $_POST["recept_image"],
+                    // "recept_image" => $_POST["recept_image"],
                         ":naamrecept" => $_POST["naamrecept"],
                         ":beschrijving" => $_POST["beschrijving"],
                         ":tijd" => $_POST["tijd"],
@@ -138,4 +138,4 @@ var_dump($_FILES);
 //    $resultaatfout .= "Er is iets fout gegaan<br />";
 //}
 
- include './views/create_verwerk_view.php';
+ include 'detailCUD.php';

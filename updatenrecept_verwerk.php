@@ -15,8 +15,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $ingredienten = $_POST["ingredienten"];
     $stappen = $_POST["stappen"];
 
-    var_dump($_POST);
-    var_dump($_FILES);
+    //var_dump($_POST);
+   // var_dump($_FILES);
     // Verwerking en invoegen in de database
     try {
         // Query voor het invoegen van gegevens
@@ -49,5 +49,5 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         // Foutafhandeling
         $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
     }
-    include "views/create_verwerk_view.php";
+    include "detailCUD.php";
 }
