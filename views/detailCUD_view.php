@@ -9,6 +9,9 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
+  <script src="overzicht_view.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
   <style>
     @font-face {
@@ -47,6 +50,7 @@
     }
     .achter{
         background-image: url(./assets/achtergrong.png);
+        background-attachment: fixed;
         
         background-position: center ;
         background-repeat: no-repeat;
@@ -93,7 +97,10 @@
   transition: scale 1s ease-in;
     }
     .marginL{
-        margin-left: 30%;
+    }
+    form input[type="text"] {
+        display: block;
+        margin-left: auto;
     }
   </style>
 </head>
@@ -101,37 +108,53 @@
 <body
   class="min-h-screen achter flex flex-col "
   >
-  <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
-    <!--<div
-        class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
-      >-->
-    <a
-      href="./overzicht.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-8 mx-auto"></div>
-      <span class="text-green-900">Home</span>
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
+
+    <!-- Home -->
+    <a href="./overzicht.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/home-1-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Home
+        </span>
     </a>
 
-    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow" />
 
-    <a
-      href="./beheerpagina.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-12 mx-auto"></div>
-      <span class="text-green-900">Profiel</span>
+    <!-- Logo -->
+    <img src="./assets/food4thought.svg"
+         alt="logo"
+         class="whiteshadow w-[clamp(7rem,15vw,12rem)] h-auto object-contain" />
+
+
+    <!-- Profiel -->
+    <a href="./detailCUD.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Profiel
+        </span>
     </a>
-    <!--</div>-->
-  </nav>
+
+</nav>
 
 
 
@@ -139,36 +162,41 @@
   <!-- hier komt de data -->
   <!-- <div class="w-[100%] mx-full h-[3px] mt-4"></div> -->
   <!-- header -->
-  <div class="max-w-[100%] px-12 py-8">
+  <div class="max-w-[100%] px-12  py-8">
+
     <h1
       class="text-gray-900 filter1 recept text-[clamp(2rem,3vw,3rem)]"> Beheer je recepten
     </h1>
-    <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Hier kan je nieuwe recepten loggen of bestaande updaten en je recept verwijderen die je niet meer wilt.</h1>
-  </div>
+          <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Hier kan je nieuwe recepten loggen of bestaande updaten en je recept verwijderen die je niet meer wilt.</h1>
 
-  <div class="grid gap-6 px-12  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+      </div>
+
+  <div class="grid gap-6 px-auto  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+      <?php
+      if ($aantalrecepten > 0) { ?>
+      <?php foreach ($recepten as $recept) { ?>
     <!-- dit is de img -->
     <div
-      class="grid font-band mx-auto border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
+      class="grid  mx-auto border-2 w-[95%] mb-6  border-solid shadow-xl rounded-3xl border-gray-400/30">
       <div
-        class="flex justify-center  w-full md:w-md lg:w-lg">
+        class="flex justify-center overflow-hidden w-full md:w-md lg:w-lg">
         <img
-          src="./assets/csscardtest.png"
+          src="<?= $recept['recept_image']?>"
           alt="eten"
-          class="rounded-t-3xl " />
+          class="rounded-t-3xl  aspect-3/2 h-60 w-full object-cover" />
       </div>
       <!-- dit is de tekst -->
       <div class=" px-4 py-4 ">
 
         <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
-          Pasta uit de oven
+            <?= $recept['naamrecept'] ?>
         </h3>
-        <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]">Simpele pasta met ketchup, kaas enplatte peterselie.<br> Lekker uit een ovenschaal.
+        <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]"><?= $recept['beschrijving'] ?>
         </p>
 
 
         <!-- dit zijn de icoontjes -->
-        <div class="grid grid-cols-[10rem_auto_auto] mt-8">
+        <div class="grid grid-cols-[7rem_auto] mt-8">
 
           <div class="flex mb-0">
             <div class=" h-7 w-7 bg-gray-900
@@ -177,12 +205,12 @@
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2">20 min</p>
+            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?= $recept['tijd'] ?> min</p>
           </div>
 
 
 
-
+<div class="flex justify-between">
           <div class="flex">
             <div class=" h-8 w-8 bg-green-900 
          [mask-image:url('./assets/leaf-icon.svg')]
@@ -190,13 +218,14 @@
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">Vegan</p>
+            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont "><?php if($recept['vegan'] == 1){
+                    ?>Vegan <?php } else { ?> Niet vegan <?php } ?></p>
           </div>
 
 
           <div class="flex marginL">
           <div class="flex">
-            <a href="#" class="h-12 hoverknop2 mx-4 w-12 text-red-900  cursor-pointer
+            <a href="./updatenrecept.php?id=<?= $recept["ID"] ?>" class="h-8 hoverknop2 mx-4 w-8 text-red-900  cursor-pointer
          [mask-image:url('./assets/pen-line-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
@@ -204,36 +233,59 @@
           </div>
 
           <div class="flex">
-            <a href="#" class="h-12 hoverknop1 w-12 text-red-900  cursor-pointer
+            <a href="./verwijderrecept.php?id=<?= $recept["ID"] ?>" class="h-8 hoverknop1 w-8 text-red-900  cursor-pointer
          [mask-image:url('./assets/trash-alt-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></a>
           </div>
           </div>
-
+</div>
         </div>
       </div>
 
     </div>
 
+          <?php } ?>
+      <?php } else { ?>
+          <p>Geen resultaten gevonden</p>
+      <?php } ?>
   </div>
 
 
-<div class="flex justify-around mt-12 max-w-[100%]">
-    <a href="./overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
-         [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></span> Terug</a>
-    <a href="./create.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst">
-        <span class="h-10 bg-white w-12 text-red-900  cursor-pointer
-         [mask-image:url('./assets/plus-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></span> Nieuw recept toevoegen</a>
 
-</div>
+  <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
+
+      <!-- Terug knop -->
+      <a href="./overzicht.php"
+         class="bg-green-900 text-white p-3 sm:p-4 justify-center items-center flex hoverknop rounded-lg text-[clamp(1rem,1.5vw,1.3rem)] cursor-pointer tekst w-full sm:w-auto">
+
+        <span class="h-8 sm:h-10 bg-white w-8 shrink-0
+            [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
+            [mask-size:contain]
+            [mask-repeat:no-repeat]
+            [mask-position:center]">
+        </span>
+
+          Terug
+      </a>
+
+      <!-- Nieuw recept knop -->
+      <a href="./create.php"
+         class="bg-green-900 text-white p-3 sm:p-4 justify-center items-center flex hoverknop rounded-lg text-[clamp(1rem,1.5vw,1.3rem)] cursor-pointer tekst w-full sm:w-auto">
+
+        <span class="h-8 sm:h-10 bg-white w-10 shrink-0
+            [mask-image:url('./assets/plus-svgrepo-com.svg')]
+            [mask-size:contain]
+            [mask-repeat:no-repeat]
+            [mask-position:center]">
+        </span>
+
+          Nieuw recept toevoegen
+      </a>
+
+  </div>
+
 
 
   <footer

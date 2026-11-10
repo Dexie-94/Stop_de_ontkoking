@@ -9,7 +9,10 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
-
+  <script src="overzicht_view.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
+  
   <style>
     @font-face {
       font-family: recept;
@@ -59,12 +62,6 @@
       width: 150px;
       height: auto;
     }
-    .niks{
-        visibility: hidden;
-    }
-    .hoverrood:hover{
-        color: red;
-    }
     .hoverknop:hover{
       scale: (1.5);
   background-color: #cb6526;
@@ -100,8 +97,10 @@
 <body
   class="min-h-screen achtergrond achter  flex flex-col "
   >
-  <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
+
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
 
     <!--<div
         class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
@@ -129,20 +128,23 @@
          [mask-position:center] w-12 mx-auto"></div>
       <span class="text-green-900">Profiel</span>
     </a>
-    <!--</div>-->
-  </nav>
+
+</nav>
 
 
   
     <div class="grid  xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
 
+        <?php
+        if ($aantalrecepten > 0) { ?>
+        <?php foreach ($recepten as $recept) { ?>
     <div class="justify-items-center">
     <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="./assets/csscardtest.png">
     </div>
 
     <div class=" rounded shadow m-4  ">
-    <p class="text-[clamp(1.45rem,1.5vw,1.7rem)] font-bold recept flex mt-4 justify-center">receptnaam</p>
-    <p class="p-8">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, animi impedit provident tempore expedita, doloribus explicabo nesciunt illum quasi dolorem quae quaerat, amet sit quam unde nobis tenetur voluptatum dolor!</p>
+    <p class="text-[clamp(1.45rem,1.5vw,1.7rem)] font-bold recept flex mt-4 justify-center"><?= $recept['naamrecept'] ?></p>
+    <p class="p-8"><?=$recept['stappen'] ?></p>
     </div>
 
 
@@ -161,8 +163,10 @@
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2">20 min</p>
-          </div>
+                  <p class="text-[clamp(0.8rem,2vw,1.2rem)] whitespace-nowrap">
+                      <?= $recept['tijd'] ?> min
+                  </p>
+              </div>
 
           <div class="flex">
             <div class=" h-8 w-8 bg-green-900
@@ -171,26 +175,37 @@
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">Vegan</p>
-          </div>
+                  <p class="text-[clamp(0.8rem,2vw,1.2rem)] whitespace-nowrap">
+                      <?php if ($recept['vegan'] == 1) { ?>
+                          Vegan
+                      <?php } else { ?>
+                          Niet vegan
+                      <?php } ?>
+                  </p>
+              </div>
 
           </div>
 
-    </div>
+      </div>
 
-    
-    <ul >
-      <li class="iconblad text-gray-900">iets</li>
-      <li class="iconblad">iets</li>
-      <li ></li>
-    </ul>
+      <ul class="ingredientenul">
+          <?php
+          $list = explode("/", $recept['ingredienten']);
+          foreach ($list as $item) { ?>
+              <li><?= htmlspecialchars(trim($item)) ?></li>
+          <?php } ?>
+      </ul>
 
-          
+  </div>
 
 
 
-    </div>
 
+  <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
+
+      <!-- Terug knop -->
+      <a href="./overzicht.php"
+         class="bg-green-900 text-white p-3 sm:p-4 justify-center items-center flex hoverknop rounded-lg text-[clamp(1rem,1.5vw,1.3rem)] cursor-pointer tekst w-full sm:w-auto">
 
     <div class="flex justify-center">
     <a href="./overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop w-[10%] rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
@@ -205,7 +220,10 @@
 
 
 
-
+  <?php } ?>
+  <?php } else { ?>
+      <p>Geen resultaten gevonden</p>
+  <?php } ?>
 
 
 <footer

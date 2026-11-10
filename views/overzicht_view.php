@@ -7,8 +7,11 @@
   <title>Food 4 Thought</title>
   <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <script src="taliwind.config.js" defer></script>
+  <script src="overzicht_view.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
   <style>
     @font-face {
@@ -47,7 +50,7 @@
     }
     .achter{
         background-image: url(./assets/achtergrong.png);
-        
+        background-attachment: fixed;
         background-position: center ;
         background-repeat: no-repeat;
         background-size: cover;
@@ -80,38 +83,53 @@
 <body
   class="min-h-screen achter flex flex-col "
   >
-  <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
-    <!--<div
-        class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
-      >-->
-    <a
-      href="./overzicht.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-8 mx-auto"></div>
-      <span class="text-green-900">Home</span>
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
+
+    <!-- Home -->
+    <a href="./overzicht.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/home-1-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Home
+        </span>
     </a>
 
-    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow" />
 
-    <a
-      href="./beheerpagina.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-12 mx-auto"></div>
-      <span class="text-green-900">Profiel</span>
+    <!-- Logo -->
+    <img src="./assets/food4thought.svg"
+         alt="logo"
+         class="whiteshadow w-[clamp(7rem,15vw,12rem)] h-auto object-contain" />
+
+
+    <!-- Profiel -->
+    <a href="./detailCUD.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Profiel
+        </span>
     </a>
-    <!--</div>-->
-  </nav>
 
+</nav>
 
 
 
@@ -122,7 +140,7 @@
     <h1
       class="text-gray-900 filter1 recept text-[clamp(2rem,3vw,3rem)]"> Recepten
     </h1>
-    <h1 class="tekst text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
+    <h1 class="tekst sub-recept text-green-900 filter1 text-[clamp(1.2rem,2vw,2rem)]">Gezond, makkelijk en lekkere recepten</h1>
   </div>
 
   <!-- zoekbalk en favorieten knop -->
@@ -146,88 +164,84 @@
     <?php } ?>
   </form>
 
-  <div class="grid gap-6 px-12  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-    <?php if ($aantalrecepten > 0) { ?>
+
+
+
+  <div class="grid  px-auto  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+
+      <?php
+      if ($aantalrecepten > 0) { ?>
       <?php foreach ($recepten as $recept) { ?>
+   <div
+
+        class="grid font-band mx-auto w-[95%] mb-6  border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
+
         <div
-          class="grid font-band mx-auto border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
-          <!-- dit is de img -->
-          <div
-            class="flex justify-center  w-full md:w-md lg:w-lg">
-            <img
-              src="<?= htmlspecialchars($recept['recept_image']) ?>"
-              alt="<?= htmlspecialchars($recept['naamrecept']) ?>"
-              class="rounded-t-3xl " />
-          </div>
-          <!-- dit is de tekst -->
-          <div class=" px-4 py-4 ">
+          class="flex justify-center overflow-hidden  w-full  md:w-md lg:w-lg">
+          <img
+            src="<?= $recept['recept_image']?>"
+            alt="eten"
+            class=" rounded-t-3xl aspect-3/2 h-60 w-full object-cover " />
+        </div>
 
-            <div class="flex justify-between items-start">
-              <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
-                <?= htmlspecialchars($recept['naamrecept']) ?>
-              </h3>
+        <div class=" px-4 py-4 ">
 
-              <!-- favoriet knop (hartje) -->
-              <form method="post" action="./favoriet.php">
-                <input type="hidden" name="recept_id" value="<?= $recept['id'] ?>" />
-                <input type="hidden" name="terug" value="<?= htmlspecialchars($_SERVER['QUERY_STRING'] ?? '') ?>" />
-                <button type="submit" title="Favoriet" class="cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8"
-                    fill="<?= $recept['favoriet_id'] ? '#cb6526' : 'none' ?>" stroke="#cb6526" stroke-width="2">
-                    <path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z" />
-                  </svg>
-                </button>
-              </form>
+          <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
+            <?= $recept['naamrecept'] ?>
+          </h3>
+          <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]"><?= $recept['beschrijving']?></p>
+
+
+          <div class="grid grid-cols-[10rem_auto_3rem] mt-8">
+
+            <div class="flex mb-0">
+              <div class=" h-7 w-7 bg-gray-900
+           [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></div>
+
+              <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?=$recept['tijd'] ?> min</p>
             </div>
 
-            <p class="my-2 tekst text-[clamp(1rem,2vw,1.2rem)]"><?= htmlspecialchars($recept['beschrijving']) ?>
-            </p>
 
+            <div class="flex">
+              <div class=" h-8 w-8 bg-green-900
+           [mask-image:url('./assets/leaf-icon.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></div>
 
-            <!-- dit zijn de icoontjes -->
-            <div class="grid grid-cols-[10rem_auto_3rem] mt-8">
-
-              <div class="flex mb-0">
-                <div class=" h-7 w-7 bg-gray-900
-             [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
-             [mask-size:contain]
-             [mask-repeat:no-repeat]
-             [mask-position:start] "></div>
-
-                <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?= (int) $recept['tijd'] ?> min</p>
-              </div>
-
-
-              <div class="flex">
-                <?php if ($recept['vegan']) { ?>
-                  <div class=" h-8 w-8 bg-green-900
-             [mask-image:url('./assets/leaf-icon.svg')]
-             [mask-size:contain]
-             [mask-repeat:no-repeat]
-             [mask-position:start] "></div>
-
-                  <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">Vegan</p>
-                <?php } ?>
-              </div>
-
-
-              <div class="flex">
-                <a href="./detail.php?id=<?= $recept['id'] ?>" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
-             [mask-image:url('./assets/round-arrow-right-svgrepo-com.svg')]
-             [mask-size:contain]
-             [mask-repeat:no-repeat]
-             [mask-position:start] "></a>
-              </div>
-
+              <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont ">
+                  <?php if($recept['vegan'] == 1){
+                  ?>Vegan <?php } else { ?> Niet vegan <?php } ?>
+              </p>
             </div>
+
+            <div class="flex">
+              <a href="./detail.php?id=<?= $recept["ID"] ?>" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
+           [mask-image:url('./assets/round-arrow-right-svgrepo-com.svg')]
+           [mask-size:contain]
+           [mask-repeat:no-repeat]
+           [mask-position:start] "></a>
+            </div>
+
           </div>
 
         </div>
+
+
+   </div>
+          <?php } ?>
+      <?php } else { ?>
+          <p>Geen resultaten gevonden</p>
       <?php } ?>
-    <?php } else { ?>
-      <p class="tekst text-[clamp(1rem,2vw,1.2rem)]">Geen recepten gevonden.</p>
-    <?php } ?>
-  </div>
+    </div>
+    
+
+
+
+
 
 
     <footer
