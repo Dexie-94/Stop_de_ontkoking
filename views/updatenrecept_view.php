@@ -163,31 +163,31 @@ $_SESSION['token'] = $token;
 
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Vul de naam van je recept in:</label><br>
-            <input id="naam" class="border-gray-900 border-2 m-4" name="naam" type="text"><br><br>
+            <input id="naam" class="border-gray-900 border-2 m-4" name="naam" type="text" required><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Geef in twee regels een omschrijving over het recept:</label><br>
-            <input id="beschrijving" class="border-gray-900 border-2 m-4" name="beschrijving" type="text"><br><br>
+            <input id="beschrijving" class="border-gray-900 border-2 m-4" name="beschrijving" type="text" required><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Upload hier een foto van je recept:</label><br>
-            <input id="foto" class="border-gray-900 border-2 m-4" name="foto" type="file"><br><br>
+            <input id="foto" class="border-gray-900 border-2 m-4" name="foto" type="file" required><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Hoeveel minuten ben je in totaal kwijt?</label>
-            <input id="min" class="border-gray-900 border-2 m-4" name="min" type="text"><br><br>
+            <input id="min" class="border-gray-900 border-2 m-4" name="min" type="text" required><br><br>
         </div>
         <div class="">
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Is je recept vegan?</label>
-            <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="recept" type="checkbox"><br><br>
+            <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="recept" type="checkbox" required><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?</label><br><br>
-            <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredient"></textarea>
+            <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredient" required></textarea>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Leg hier in stappen uit hoe je het recept bereid</label><br><br>
-            <textarea id="stappen" name="stappen" class="border-gray-900 border-2 m-4 xs:cols-37 w-[90%] "  rows="8" cols="90"></textarea>
+            <textarea id="stappen" name="stappen" class="border-gray-900 border-2 m-4 xs:cols-37 w-[90%] "  rows="8" cols="90" required></textarea>
         </div>
 
         <div class="grid grid-cols-1-xl justify-center items-center mt-12">
