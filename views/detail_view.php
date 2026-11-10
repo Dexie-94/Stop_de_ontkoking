@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recept</title>
-  <link rel="icon" type="image/svg+xml" href="../assets/food4thought_logo.png" />
+  <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
@@ -29,7 +29,7 @@
     }
     .achter{
         background-image: url(./assets/achtergrong.png);
-        
+        background-attachment: fixed;
         background-position: center ;
         background-repeat: no-repeat;
         background-size: cover;
@@ -62,22 +62,11 @@
       width: 150px;
       height: auto;
     }
-    .niks{
-        visibility: hidden;
-    }
-    .hoverrood:hover{
-        color: red;
-    }
     .hoverknop:hover{
       scale: (1.5);
   background-color: #cb6526;
   transition: background-color 1s ease-in-out, transform 1s ease-out;
   transition: scale 1s ease-in;
-    }
-    .formulierbg{
-        background-image: url(./assets/achtergrond.svg);
-        background-position: end;
-        background-repeat: no-repeat;
     }
     .beneden{
        margin-top: auto;
@@ -86,54 +75,74 @@
     text-align: center;
     box-sizing: border-box;
     }
-    .filter1{
-        filter:drop-shadow(1px 1px 1px white);
-    }
-    .iconblad{
-    mask-image:url('../assets/leaf-icon.svg');
-    mask-size:contain;
-    mask-repeat:no-repeat;
-    mask-position:start;
-    background-color: darkgreen;
-    margin:20px;
+    .ingredientenul{
+            list-style-image: url('./assets/');
+            list-style: none;
+            padding-left: 0;
 
+    }
+    li::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("./assets/leaf-icon.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 8px;
     }
   </style>
     
 <body
   class="min-h-screen achtergrond achter  flex flex-col "
   >
-  <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
-    <!--<div
-        class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
-      >-->
-    <a
-      href="./overzicht.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-8 mx-auto"></div>
-      <span class="text-green-900">Home</span>
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
+
+    <!-- Home -->
+    <a href="./overzicht.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/home-1-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Home
+        </span>
     </a>
 
-    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
-    <a
-      href="./beheerpagina.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-12 mx-auto"></div>
-      <span class="text-green-900">Profiel</span>
+    <!-- Logo -->
+    <img src="./assets/food4thought.svg"
+         alt="logo"
+         class="whiteshadow w-[clamp(7rem,15vw,12rem)] h-auto object-contain" />
+
+
+    <!-- Profiel -->
+    <a href="./detailCUD.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Profiel
+        </span>
     </a>
-    <!--</div>-->
-  </nav>
+
+</nav>
 
 
   
@@ -154,60 +163,82 @@
 
 
         </div>
-    <div class="border-t-8 h-auto border-gray-400 shadow m-4 border-double  ">
+  <div class="border-t-8 h-auto border-gray-400 shadow m-4 border-double">
 
-        <div class="flex w-full around">
-    <p class="font-bold tekst justify-start mx-12 text-[clamp(1.35rem,1.5vw,1.7rem)] mt-12">Ingredienten</p>
-     <div class="grid grid-cols-[7rem_auto_2rem] justify-end w-full mt-8">
+      <div class="flex items-center justify-between w-full px-2 py-3">
 
-          <div class="flex mb-0">
-            <div class=" h-7 w-7 bg-gray-900
-         [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></div>
+          <!-- Ingrediënten links -->
+          <p class="font-bold text-[clamp(0.95rem,1.5vw,1.7rem)]">
+              Ingrediënten
+          </p>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont mx-2"><?=$recept['tijd'] ?> min</p>
+          <!-- Tijd en vegan bij elkaar rechts -->
+          <div class="flex items-center gap-3 sm:gap-5">
+
+              <!-- Tijd -->
+              <div class="flex items-center gap-1">
+                  <div class="h-6 w-6 bg-gray-900
+                    [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+                  </div>
+
+                  <p class="text-[clamp(0.8rem,2vw,1.2rem)] whitespace-nowrap">
+                      <?= $recept['tijd'] ?> min
+                  </p>
+              </div>
+
+              <!-- Vegan -->
+              <div class="flex items-center gap-1">
+                  <div class="h-6 w-6 bg-green-900
+                    [mask-image:url('./assets/leaf-icon.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+                  </div>
+
+                  <p class="text-[clamp(0.8rem,2vw,1.2rem)] whitespace-nowrap">
+                      <?php if ($recept['vegan'] == 1) { ?>
+                          Vegan
+                      <?php } else { ?>
+                          Niet vegan
+                      <?php } ?>
+                  </p>
+              </div>
+
           </div>
 
-          <div class="flex">
-            <div class=" h-8 w-8 bg-green-900
-         [mask-image:url('./assets/leaf-icon.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></div>
+      </div>
 
-            <p class="text-[clamp(1rem,2vw,1.2rem)]  bold minfont "><?php if($recept['vegan'] == 1){
-                    ?>Vegan <?php } else { ?> Niet vegan <?php } ?></p>
-          </div>
+      <ul class="ingredientenul">
+          <?php
+          $list = explode("-", $recept['ingredienten']);
+          foreach ($list as $item) { ?>
+              <li><?= htmlspecialchars(trim($item)) ?></li>
+          <?php } ?>
+      </ul>
 
-          </div>
-
-    </div>
-
-
-        <ul class="ingredientenul">
-            <?php
-            $list = explode("/", $recept['ingredienten']);
-            foreach ($list as $item) { ?>
-                <li class="iconblad text-gray-900"><?= htmlspecialchars(trim($item)) ?></li>
-            <?php } ?>
-        </ul>
-
-
-          
+  </div>
 
 
 
-    </div>
 
+  <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
 
-    <div class="flex justify-center">
-    <a href="./overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop w-[10%] rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
-         [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:start] "></span> Terug</a>
+      <!-- Terug knop -->
+      <a href="./overzicht.php"
+         class="bg-green-900 text-white p-3 sm:p-4 justify-center items-center flex hoverknop rounded-lg text-[clamp(1rem,1.5vw,1.3rem)] cursor-pointer tekst w-full sm:w-auto">
+
+        <span class="h-8 sm:h-10 bg-white w-8 shrink-0
+            [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
+            [mask-size:contain]
+            [mask-repeat:no-repeat]
+            [mask-position:center]">
+        </span>
+
+          Terug
+      </a>
     </div>
 
 

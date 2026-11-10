@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food 4 Thought</title>
-  <link rel="icon" type="image/svg+xml" href="../assets/food4thought_logo.png" />
+  <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
   <script src="https://cdn.tailwindcss.com" defer></script>
   <script src="taliwind.config.js" defer></script>
@@ -50,7 +50,7 @@
     }
     .achter{
         background-image: url(./assets/achtergrong.png);
-        
+        background-attachment: fixed;
         background-position: center ;
         background-repeat: no-repeat;
         background-size: cover;
@@ -83,38 +83,53 @@
 <body
   class="min-h-screen achter flex flex-col "
   >
-  <nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
-    <!--<div
-        class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
-      >-->
-    <a
-      href="#"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-8 mx-auto"></div>
-      <span class="text-green-900">Home</span>
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
+
+    <!-- Home -->
+    <a href="./overzicht.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/home-1-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Home
+        </span>
     </a>
 
-    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
-    <a
-      href="./beheerpagina.php"
-      class=" px-2 py-2  font-semibold ">
-      <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-12 mx-auto"></div>
-      <span class="text-green-900">Profiel</span>
+    <!-- Logo -->
+    <img src="./assets/food4thought.svg"
+         alt="logo"
+         class="whiteshadow w-[clamp(7rem,15vw,12rem)] h-auto object-contain" />
+
+
+    <!-- Profiel -->
+    <a href="./detailCUD.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Profiel
+        </span>
     </a>
-    <!--</div>-->
-  </nav>
 
+</nav>
 
 
 
@@ -131,21 +146,21 @@
 
 
 
-  <div class="grid gap-6 px-auto  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+  <div class="grid  px-auto  w-full xs:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
 
       <?php
       if ($aantalrecepten > 0) { ?>
       <?php foreach ($recepten as $recept) { ?>
    <div
 
-        class="grid font-band mx-auto  border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
+        class="grid font-band mx-auto w-[95%] mb-6  border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
 
         <div
-          class="flex justify-center content-stretch  w-full  md:w-md lg:w-lg">
+          class="flex justify-center overflow-hidden  w-full  md:w-md lg:w-lg">
           <img
             src="<?= $recept['recept_image']?>"
             alt="eten"
-            class=" rounded-t-3xl aspect-3/2  " />
+            class=" rounded-t-3xl aspect-3/2 h-60 w-full object-cover " />
         </div>
 
         <div class=" px-4 py-4 ">
