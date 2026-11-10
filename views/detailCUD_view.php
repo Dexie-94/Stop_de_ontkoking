@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bewerken</title>
-  <link rel="icon" type="image/svg+xml" href="../assets/food4thought_logo.png" />
+  <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
@@ -13,12 +13,12 @@
   <style>
     @font-face {
       font-family: recept;
-      src: url("../assets/georgiab.ttf");
+      src: url("./assets/georgiab.ttf");
     }
 
     @font-face {
       font-family: tekst;
-      src: url(../assets/georgia.ttf);
+      src: url(./assets/georgia.ttf);
     }
 
     .recept {
@@ -46,7 +46,7 @@
       color: #cb6526;
     }
     .achter{
-        background-image: url(../assets/achtergrong.png);
+        background-image: url(./assets/achtergrong.png);
         
         background-position: center ;
         background-repeat: no-repeat;
@@ -111,20 +111,20 @@
       href="./overzicht.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/home-1-svgrepo-com.svg')]
+         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-8 mx-auto"></div>
       <span class="text-green-900">Home</span>
     </a>
 
-    <img src="../assets/food4thought.svg" alt="logo" class="whiteshadow" />
+    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow" />
 
     <a
-      href="../beheerpagina.php"
+      href="./beheerpagina.php"
       class=" px-2 py-2  font-semibold ">
       <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('../assets/hat-chef-svgrepo-com.svg')]
+         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:center] w-12 mx-auto"></div>
@@ -153,7 +153,7 @@
       <div
         class="flex justify-center  w-full md:w-md lg:w-lg">
         <img
-          src="../assets/csscardtest.png"
+          src="./assets/csscardtest.png"
           alt="eten"
           class="rounded-t-3xl " />
       </div>
@@ -172,7 +172,7 @@
 
           <div class="flex mb-0">
             <div class=" h-7 w-7 bg-gray-900
-         [mask-image:url('../assets/clock-five-svgrepo-com.svg')]
+         [mask-image:url('./assets/clock-five-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
@@ -185,7 +185,7 @@
 
           <div class="flex">
             <div class=" h-8 w-8 bg-green-900 
-         [mask-image:url('../assets/leaf-icon.svg')]
+         [mask-image:url('./assets/leaf-icon.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></div>
@@ -197,7 +197,7 @@
           <div class="flex marginL">
           <div class="flex">
             <a href="#" class="h-12 hoverknop2 mx-4 w-12 text-red-900  cursor-pointer
-         [mask-image:url('../assets/pen-line-svgrepo-com.svg')]
+         [mask-image:url('./assets/pen-line-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></a>
@@ -205,7 +205,7 @@
 
           <div class="flex">
             <a href="#" class="h-12 hoverknop1 w-12 text-red-900  cursor-pointer
-         [mask-image:url('../assets/trash-alt-svgrepo-com.svg')]
+         [mask-image:url('./assets/trash-alt-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></a>
@@ -221,14 +221,14 @@
 
 
 <div class="flex justify-around mt-12 max-w-[100%]">
-    <a href="../overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
-         [mask-image:url('../assets/flip-backward-svgrepo-com.svg')]
+    <a href="./overzicht.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst"><span class="h-10 bg-white w-8 text-red-900  cursor-pointer
+         [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></span> Terug</a>
-    <a href="../create.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst">
+    <a href="./create.php" class="bg-green-900 text-white p-4 justify-center flex hoverknop rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst">
         <span class="h-10 bg-white w-12 text-red-900  cursor-pointer
-         [mask-image:url('../assets/plus-svgrepo-com.svg')]
+         [mask-image:url('./assets/plus-svgrepo-com.svg')]
          [mask-size:contain]
          [mask-repeat:no-repeat]
          [mask-position:start] "></span> Nieuw recept toevoegen</a>
