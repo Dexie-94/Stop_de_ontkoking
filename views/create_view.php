@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create een recept</title>
-    <link rel="icon" type="image/svg+xml" href="./assets/food4thought.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="taliwind.config.js" defer></script>
@@ -26,7 +26,7 @@
         }
         .achter{
             background-image: url(./assets/achtergrong.png);
-
+            background-attachment: fixed;
             background-position: center ;
             background-repeat: no-repeat;
             background-size: cover;
@@ -107,36 +107,52 @@
 <body
     class="min-h-screen achter flex flex-col "
 >
-<nav
-    class="flex items-center border-b border-gray-900/40 justify-between px-2 px-6 bg-gray-100/30 backdrop-blur-xs sticky top-0 z-50">
 
-    <!--<div
-        class="flex gap-2 space-x-20 text-[clamp(0.7rem,2vw,1.20rem)] sm:px-8 md:px-6 md:gap-4"
-      >-->
-    <a
-        href="./overzicht.php"
-        class=" px-2 py-2  font-semibold ">
-        <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/home-1-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-8 mx-auto"></div>
-        <span class="text-green-900">Home</span>
+<nav class="flex items-center justify-between border-b border-gray-900/40
+            px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
+            sticky top-0 z-50">
+
+    <!-- Home -->
+    <a href="./overzicht.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/home-1-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Home
+        </span>
     </a>
 
-    <img src="./assets/food4thought.svg" alt="logo" class="whiteshadow aspect-3/2 " />
 
-    <a
-        href="./beheerpagina.php"
-        class=" px-2 py-2  font-semibold ">
-        <div class="whiteshadow h-10 w-10 bg-green-900
-         [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
-         [mask-size:contain]
-         [mask-repeat:no-repeat]
-         [mask-position:center] w-12 mx-auto"></div>
-        <span class="text-green-900">Profiel</span>
+    <!-- Logo -->
+    <img src="./assets/food4thought.svg"
+         alt="logo"
+         class="whiteshadow w-[clamp(7rem,15vw,12rem)] h-auto object-contain" />
+
+
+    <!-- Profiel -->
+    <a href="./detailCUD.php"
+       class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
+
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+                    aspect-square bg-green-900
+                    [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
+                    [mask-size:contain]
+                    [mask-repeat:no-repeat]
+                    [mask-position:center]">
+        </div>
+
+        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+            Profiel
+        </span>
     </a>
-    <!--</div>-->
+
 </nav>
 
 <?php
@@ -159,11 +175,12 @@ $_SESSION['token'] = $token;
         class="grid  mx-auto border-2 border-solid  shadow-xl p-5  rounded-3xl border-green-900/80 formulierbg">
 <form action="./create_verwerk.php" class="form-row grid aspect-2/4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 " method="POST">
     <!-- stop token in formulier om te vergelijken -->
+
     <input type="hidden" name="tokenVeld" value="<?= $token; ?>"/>
 
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Vul de naam van je recept in:</label><br>
-    <input id="naam" class="border-gray-900 border-2 m-4" name="naam" type="text"><br><br>
+    <input id="naam" class="border-gray-900 border-2 m-4" name="naamrecept" type="text"><br><br>
     </div>
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Geef in twee regels een omschrijving over het recept:</label><br>
@@ -171,29 +188,31 @@ $_SESSION['token'] = $token;
     </div>
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Upload hier een foto van je recept:</label><br>
-    <input id="foto" class="border-gray-900 border-2 m-4" name="foto" type="file"><br><br>
+    <input id="foto" class="border-gray-900 border-2 m-4" name="recept_image" type="file"><br><br>
     </div>
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Hoeveel minuten ben je in totaal kwijt?</label>
-    <input id="min" class="border-gray-900 border-2 m-4" name="min" type="text"><br><br>
+    <input id="min" class="border-gray-900 border-2 m-4" name="tijd" type="text"><br><br>
     </div>
     <div class="">
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Is je recept vegan?</label>
-    <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="recept" type="checkbox"><br><br>
+    <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="vegan" type="checkbox"><br><br>
     </div>
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?</label><br><br>
-        <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredient"></textarea>
+        <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredienten"></textarea>
     </div>
     <div>
     <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Leg hier in stappen uit hoe je het recept bereid</label><br><br>
     <textarea id="stappen" name="stappen" class="border-gray-900 border-2 m-4 xs:cols-37 w-[90%] "  rows="8" cols="90"></textarea>
     </div>
 
-    <div class="grid grid-cols-1-xl justify-center items-center mt-12">
+    <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
         <input type="submit" value="Recept aanmaken!" class="bg-green-900 text-white p-4 justify-center flex hoverknop w-[5%] rounded-lg text-[clamp(1.2rem,1.5vw,1.3rem)] cursor-pointer tekst "><br>
     </div>
+
 </form>
+
 </div>
 
 <footer

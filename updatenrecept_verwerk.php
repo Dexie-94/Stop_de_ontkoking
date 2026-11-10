@@ -2,20 +2,26 @@
 <?php
 require './backend-des/includes/config.php';
 
-$resultaat = "";
+
+$resultaatfout='';
+$resultaatgoed='';
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $ID = $_POST["ID"];
-    $naam = $_POST["naam"];
-    $grote = $_POST["grote"];
-    $gewicht = $_POST["gewicht"];
+    $naamrecept = $_POST["naamrecept"];
+    $beschrijving = $_POST["beschrijving"];
+    $tijd = $_POST["tijd"];
+    //$vegan = $_POST["vegan"];
+    $ingredienten = $_POST["ingredienten"];
+    $stappen = $_POST["stappen"];
 
-
+    var_dump($_POST);
+    var_dump($_FILES);
     // Verwerking en invoegen in de database
     try {
         // Query voor het invoegen van gegevens
         $query = "UPDATE koken
-                  SET naam = :naam, grote = :grote, gewicht = :gewicht
+                  SET naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
                   WHERE ID = :ID";
 
         // Bereid de query voor
@@ -23,22 +29,25 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
         $stmt->execute([
-            'naam'  => $naam,
-            'grote'     => $grote,
-            'gewicht' => $gewicht,
-            'ID'         => $ID
+            ':naamrecept'  => $naamrecept,
+            ':beschrijving'  => $beschrijving,
+            ':tijd' => $tijd,
+            "vegan" => isset($_POST["vegan"]) ? 1 : 0,
+            ":ingredienten" => $_POST["ingredienten"],
+            ":stappen" => $_POST["stappen"],
+            ':ID'         => $ID
         ]);
 
         // Controleer of het is gelukt
         if ($stmt->rowCount()) {
-            $resultaat = "Het $naam is aangepast!";
+            $resultaatgoed = "Het $naamrecept is aangepast!";
         } else {
-            $resultaat = "Er is iets fout gegaan bij het aanpassen van het item.";
+            $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
         }
 
     } catch (PDOException $e) {
         // Foutafhandeling
-        $resultaat = "Fout bij het toevoegen: " . $e->getMessage();
+        $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
     }
-    include "views/updatenrecepten_verwerk_view.php";
+    include "views/create_verwerk_view.php";
 }
