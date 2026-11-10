@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inloggen</title>
   <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png"
-  " />
+   />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
