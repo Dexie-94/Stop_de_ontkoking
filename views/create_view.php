@@ -199,7 +199,7 @@ $_SESSION['token'] = $token;
     <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="vegan" type="checkbox"><br><br>
     </div>
     <div>
-    <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?</label><br><br>
+    <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?<br> Zet achter elk ingredient een - symbol</label><br><br>
         <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredienten"></textarea>
     </div>
     <div>
