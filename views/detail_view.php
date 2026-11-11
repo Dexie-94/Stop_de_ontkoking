@@ -155,7 +155,7 @@
     <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="uploads/<?= htmlspecialchars($recept['recept_image']) ?>">
     </div>
 
-    <div class=" rounded shadow m-4  ">
+    <div class=" rounded achtergrond shadow m-4  ">
     <p class="text-[clamp(1.45rem,1.5vw,1.7rem)] font-bold recept flex mt-4 justify-center"><?= $recept['naamrecept'] ?></p>
     <p class="p-8"><?=$recept['stappen'] ?></p>
     </div>
@@ -163,7 +163,7 @@
 
 
         </div>
-  <div class="border-t-8 h-auto border-gray-400 shadow m-4 border-double">
+  <div class="border-t-8 h-auto border-gray-400 achtergrond shadow m-4 border-double">
 
       <div class="flex items-center justify-between w-full px-2 py-3">
 
