@@ -9,6 +9,16 @@
 //echo "</pre>";
 //exit;
 
+$errors = [];
+
+if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
+    array_push($errors, "EMPTY FIELD");
+}
+if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
+    array_push($errors, "SPECIAL CHARACTERS DETECTED");
+}
+
+
 $resultaatfout='';
 $resultaatgoed='';
 
