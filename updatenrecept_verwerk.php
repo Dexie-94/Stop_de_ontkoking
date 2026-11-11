@@ -2,16 +2,6 @@
 <?php
 require './backend-des/includes/config.php';
 
-$errors = [];
-
-if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
-    array_push($errors, "EMPTY FIELD");
-}
-if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
-    array_push($errors, "SPECIAL CHARACTERS DETECTED");
-}
-
-
 $resultaatfout='';
 $resultaatgoed='';
 
@@ -31,6 +21,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     //var_dump($_POST);
    // var_dump($_FILES);
     // Verwerking en invoegen in de database
+
+$errors = [];
+
+if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
+    array_push($errors, "EMPTY FIELD");
+}
+if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
+    array_push($errors, "SPECIAL CHARACTERS DETECTED");
+}
+
 
     $imageName = "";
     $imageName = "";
@@ -59,37 +59,42 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     }
 
-    try {
-        // Query voor het invoegen van gegevens
-        $query = "UPDATE koken
-                  SET recept_image = :recept_image, naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
-                  WHERE ID = :ID";
+    if (empty($errors)) {
+        try {
+            // Query voor het invoegen van gegevens
+            $query = "UPDATE koken
+                      SET recept_image = :recept_image, naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
+                      WHERE ID = :ID";
 
-        // Bereid de query voor
-        $stmt = $PDO->prepare($query);
+            // Bereid de query voor
+            $stmt = $PDO->prepare($query);
 
-        // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
-        $stmt->execute([
-            ":recept_image" => $imageName,
-            ':naamrecept'  => $naamrecept,
-            ':beschrijving'  => $beschrijving,
-            ':tijd' => $tijd,
-            "vegan" => isset($_POST["vegan"]) ? 1 : 0,
-            ":ingredienten" => $_POST["ingredienten"],
-            ":stappen" => $_POST["stappen"],
-            ':ID'         => $ID
-        ]);
+            // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
+            $stmt->execute([
+                ":recept_image" => $imageName,
+                ':naamrecept'  => $naamrecept,
+                ':beschrijving'  => $beschrijving,
+                ':tijd' => $tijd,
+                "vegan" => isset($_POST["vegan"]) ? 1 : 0,
+                ":ingredienten" => $_POST["ingredienten"],
+                ":stappen" => $_POST["stappen"],
+                ':ID'         => $ID
+            ]);
 
-        // Controleer of het is gelukt
-        if ($stmt->rowCount()) {
-            $resultaatgoed = "Het $naamrecept is aangepast!";
-        } else {
-            $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
+            // Controleer of het is gelukt
+            if ($stmt->rowCount()) {
+                $resultaatgoed = "Het $naamrecept is aangepast!";
+            } else {
+                $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
+            }
+
+        } catch (PDOException $e) {
+            // Foutafhandeling
+            $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
         }
-
-    } catch (PDOException $e) {
-        // Foutafhandeling
-        $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
+    } else {
+        // Voeg de foutmeldingen samen tot één string
+        $resultaatfout = implode(", ", $errors);
     }
     include "./views/create_verwerk_view.php";
 }
