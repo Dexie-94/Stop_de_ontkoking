@@ -152,7 +152,7 @@
         if ($aantalrecepten > 0) { ?>
         <?php foreach ($recepten as $recept) { ?>
     <div class="justify-items-center">
-    <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="<?= $recept['recept_image']?>">
+    <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="uploads/<?= htmlspecialchars($recept['recept_image']) ?>">
     </div>
 
     <div class=" rounded shadow m-4  ">

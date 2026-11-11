@@ -170,7 +170,7 @@
         <?php
         if ($aantalrecepten > 0) { ?>
         class="grid  mx-auto border-2 border-solid  shadow-xl p-5  rounded-3xl border-green-900/80 formulierbg">
-    <form action="./updatenrecept_verwerk.php" class="form-row grid aspect-2/4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 " method="POST">
+    <form action="./updatenrecept_verwerk.php" class="form-row grid aspect-2/4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 " method="POST" enctype="multipart/form-data">
         <!-- stop token in formulier om te vergelijken -->
         <?php foreach ($recepten as $recept) { ?>
 
@@ -187,7 +187,7 @@
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Upload hier een foto van je recept:</label><br>
-            <input id="foto" class="border-gray-900 border-2 m-4" name="foto" type="file" required><br><br>
+            <input id="foto" class="border-gray-900 border-2 m-4" name="recept_image" type="file" ><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Hoeveel minuten ben je in totaal kwijt?</label>
