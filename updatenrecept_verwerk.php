@@ -2,7 +2,6 @@
 <?php
 require './backend-des/includes/config.php';
 
-
 $resultaatfout='';
 $resultaatgoed='';
 
@@ -22,6 +21,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     //var_dump($_POST);
    // var_dump($_FILES);
     // Verwerking en invoegen in de database
+
+$errors = [];
+
+if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
+    array_push($errors, "EMPTY FIELD");
+}
+if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
+    array_push($errors, "SPECIAL CHARACTERS DETECTED");
+}
+
 
     $imageName = "";
     $imageName = "";
@@ -82,10 +91,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
             echo '<div class="popup1" id="popup1">' . $resultaatfout . '</div>';
         }
-
-    } catch (PDOException $e) {
-        // Foutafhandeling
-        $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
+    } else {
+        // Voeg de foutmeldingen samen tot één string
+        $resultaatfout = implode(", ", $errors);
     }
     include "detailCUD.php";
 }

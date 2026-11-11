@@ -9,11 +9,31 @@
 //echo "</pre>";
 //exit;
 
+$errors = [];
+
+if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
+    array_push($errors, "EMPTY FIELD");
+}
+if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
+    array_push($errors, "SPECIAL CHARACTERS DETECTED");
+}
+
+
 $resultaatfout='';
 $resultaatgoed='';
 
 global $PDO;
 require './backend-des/includes/config.php';
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST"){
+        if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
+        array_push($errors, "EMPTY FIELD");
+    }
+    if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
+        array_push($errors, "SPECIAL CHARACTERS DETECTED");
+    }
+}
+
 // kijk naar server variabele referer voor de afzender
 //if (isset($_SERVER["HTTP_REFERER"])) {
 //    $afzender = $_SERVER["HTTP_REFERER"];
@@ -131,6 +151,7 @@ if (isset($_FILES["recept_image"]) && $_FILES["recept_image"]["error"] === UPLOA
 
 
 // insert query in twee delen
+if (empty($errors)) {
                 $query = "INSERT INTO koken (recept_image, naamrecept, beschrijving, tijd, vegan, ingredienten, stappen)";
                 $query .= " VALUES (:recept_image, :naamrecept, :beschrijving, :tijd, :vegan, :ingredienten, :stappen)";
 
@@ -176,5 +197,9 @@ if (isset($_FILES["recept_image"]) && $_FILES["recept_image"]["error"] === UPLOA
 //} else {
 //    $resultaatfout .= "Er is iets fout gegaan<br />";
 //}
+} else {
+        $resultaatfout = implode("<br />", $errors);
+    }
+
 
  include 'detailCUD.php';
