@@ -1,99 +1,158 @@
-
 <?php
-require './backend-des/includes/config.php';
 
-$resultaatfout='';
-$resultaatgoed='';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+require_once './backend-des/includes/config.php';
 
+$resultaatfout = '';
+$resultaatgoed = '';
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $ID = $_POST["ID"];
-  // $recept_image = $_POST["recept_image"];
-    $naamrecept = $_POST["naamrecept"];
-    $beschrijving = $_POST["beschrijving"];
-    $tijd = $_POST["tijd"];
- //   $vegan = $_POST["vegan"];
-    $ingredienten = $_POST["ingredienten"];
-    $stappen = $_POST["stappen"];
+    $ID = filter_input(INPUT_POST, "ID", FILTER_VALIDATE_INT);
 
-    //var_dump($_POST);
-   // var_dump($_FILES);
-    // Verwerking en invoegen in de database
-
-$errors = [];
-
-if (empty($_POST['naamrecept']) || empty($_POST['beschrijving']) || empty($_POST['tijd']) || empty($_POST['ingredienten']) || empty($_POST['stappen'])) {
-    array_push($errors, "EMPTY FIELD");
-}
-if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0-9]*$/", $_POST['beschrijving']) || preg_match("/^[0-9]*$/", $_POST['tijd']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['ingredienten']) || preg_match("/^[a-zA-Z0-9 ]*$/", $_POST['stappen'])) {
-    array_push($errors, "SPECIAL CHARACTERS DETECTED");
-}
-
-
-    $imageName = "";
-    $imageName = "";
-
-    if (isset($_FILES["recept_image"]) && $_FILES["recept_image"]["error"] === UPLOAD_ERR_OK) {
-
-        $ext = pathinfo($_FILES["recept_image"]["name"], PATHINFO_EXTENSION);
-
-        $imageName = uniqid("recept_") . "." . $ext;
-
-        $target = __DIR__ . "/uploads/" . $imageName;
-
-        if (!move_uploaded_file($_FILES["recept_image"]["tmp_name"], $target)) {
-
-            die("Upload failed. Path: " . $target
-
-                . " | folder exists: " . (is_dir(__DIR__ . "/uploads") ? "yes" : "NO")
-
-                . " | writable: " . (is_writable(__DIR__ . "/uploads") ? "yes" : "NO"));
-
-        }
-
-    } //else {
-
-    //     die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
-
-    // }
+    if (!$ID) {
+        die("Ongeldig recept-ID!");
+    }
 
     try {
-        // Query voor het invoegen van gegevens
+
+        // Oude gegevens ophalen
+        $stmt = $PDO->prepare("SELECT * FROM koken WHERE ID = :ID");
+        $stmt->execute([":ID" => $ID]);
+
+        $oudRecept = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$oudRecept) {
+            die("Recept niet gevonden!");
+        }
+
+        // Lege velden behouden hun oude waarde
+        $naamrecept = trim($_POST["naamrecept"] ?? '');
+        if ($naamrecept === '') {
+            $naamrecept = $oudRecept["naamrecept"];
+        }
+
+        $beschrijving = trim($_POST["beschrijving"] ?? '');
+        if ($beschrijving === '') {
+            $beschrijving = $oudRecept["beschrijving"];
+        }
+
+        $tijd = $_POST["tijd"] ?? '';
+        if ($tijd === '') {
+            $tijd = $oudRecept["tijd"];
+        }
+
+        $ingredienten = trim($_POST["ingredienten"] ?? '');
+        if ($ingredienten === '') {
+            $ingredienten = $oudRecept["ingredienten"];
+        }
+
+        $stappen = trim($_POST["stappen"] ?? '');
+        if ($stappen === '') {
+            $stappen = $oudRecept["stappen"];
+        }
+
+        // Vegan: aangevinkt = 1, niet aangevinkt = 0
+        $vegan = isset($_POST["vegan"]) ? 1 : 0;
+
+        // Oude afbeelding behouden
+        $imageName = $oudRecept["recept_image"];
+
+        // Bereidingstijd controleren
+        if (
+            filter_var($tijd, FILTER_VALIDATE_INT) === false ||
+            $tijd < 1 ||
+            $tijd >= 180
+        ) {
+            throw new Exception(
+                "De bereidingstijd moet tussen 1 en 59 minuten liggen!"
+            );
+        }
+
+        // Nieuwe afbeelding uploaden indien gekozen
+        if (
+            isset($_FILES["recept_image"]) &&
+            $_FILES["recept_image"]["error"] !== UPLOAD_ERR_NO_FILE
+        ) {
+
+            if ($_FILES["recept_image"]["error"] !== UPLOAD_ERR_OK) {
+                throw new Exception("Er ging iets fout met de afbeelding!");
+            }
+
+            $ext = strtolower(
+                pathinfo(
+                    $_FILES["recept_image"]["name"],
+                    PATHINFO_EXTENSION
+                )
+            );
+
+            $toegestaneExtensies = ["jpg", "jpeg", "png", "webp"];
+
+            if (!in_array($ext, $toegestaneExtensies, true)) {
+                throw new Exception(
+                    "Gebruik een JPG-, JPEG-, PNG- of WEBP-afbeelding!"
+                );
+            }
+
+            $imageName = uniqid("recept_") . "." . $ext;
+
+            $target = __DIR__ . "/uploads/" . $imageName;
+
+            if (!move_uploaded_file(
+                $_FILES["recept_image"]["tmp_name"],
+                $target
+            )) {
+                throw new Exception(
+                    "De nieuwe afbeelding kon niet worden opgeslagen!"
+                );
+            }
+        }
+
+        // Database aanpassen
         $query = "UPDATE koken
-                  SET recept_image = :recept_image, naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
+                  SET recept_image = :recept_image,
+                      naamrecept = :naamrecept,
+                      beschrijving = :beschrijving,
+                      tijd = :tijd,
+                      vegan = :vegan,
+                      ingredienten = :ingredienten,
+                      stappen = :stappen
                   WHERE ID = :ID";
 
-        // Bereid de query voor
         $stmt = $PDO->prepare($query);
 
-        // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
         $stmt->execute([
             ":recept_image" => $imageName,
-            ':naamrecept'  => $naamrecept,
-            ':beschrijving'  => $beschrijving,
-            ':tijd' => $tijd,
-            "vegan" => isset($_POST["vegan"]) ? 1 : 0,
+            ":naamrecept" => $naamrecept,
+            ":beschrijving" => $beschrijving,
+            ":tijd" => $tijd,
+            ":vegan" => $vegan,
             ":ingredienten" => $ingredienten,
             ":stappen" => $stappen,
-            ':ID'         => $ID
+            ":ID" => $ID
         ]);
 
-        // Controleer of het is gelukt
-        if ($stmt->rowCount()) {
-            $resultaatgoed =  "Het $naamrecept is succesvol aangepast!";
+        $resultaatgoed = $naamrecept . " is succesvol aangepast!";
 
+        echo '<div class="popup" id="popup">' .
+            htmlspecialchars($resultaatgoed) .
+            '</div>';
 
-            echo '<div class="popup" id="popup">' . $resultaatgoed . '</div>';
+    } catch (Exception $e) {
 
-        } else {
-            $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
-            echo '<div class="popup1" id="popup1">' . $resultaatfout . '</div>';
-        }
-    } else {
-        // Voeg de foutmeldingen samen tot één string
-        $resultaatfout = implode(", ", $errors);
+        error_log($e->getMessage());
+
+        $resultaatfout = $e->getMessage();
+
+        echo '<div class="popup1" id="popup1">' .
+            htmlspecialchars($resultaatfout) .
+            '</div>';
     }
-    include "detailCUD.php";
 }
+
+include "detailCUD.php";
+
+?>

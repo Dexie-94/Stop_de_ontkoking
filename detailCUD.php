@@ -1,6 +1,6 @@
 <?php
 
-require './backend-des/includes/config.php';
+require_once './backend-des/includes/config.php';
 
 $query = 'SELECT * FROM koken';
 $stmt = $PDO->prepare($query);
