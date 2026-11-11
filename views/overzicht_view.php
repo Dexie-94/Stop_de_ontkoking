@@ -12,13 +12,13 @@
   <script src="overzicht_view.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
+    <script src="popup.js" defer></script>
 
   <style>
     @font-face {
       font-family: recept;
       src: url("../assets/georgiab.ttf");
     }
-
     @font-face {
       font-family: tekst;
       src: url(../assets/georgia.ttf);

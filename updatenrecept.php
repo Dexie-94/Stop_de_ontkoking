@@ -19,7 +19,7 @@ try {
     $recepten = $stmt->fetchAll();
     //telt de rijen
     $aantalrecepten = count($recepten);
-    include 'views/updatenrecept_view.php';
+    include './views/updatenrecept_view.php';
 
 } catch (PDOException $e) {
     echo $e->getMessage();

@@ -143,11 +143,11 @@ if (isset($_FILES["recept_image"]) && $_FILES["recept_image"]["error"] === UPLOA
 
     }
 
-} else {
+} //else {
 
-    die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
+    //die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
 
-}
+//}
 
 
 // insert query in twee delen
@@ -176,8 +176,10 @@ if (empty($errors)) {
 
                     if ($stmt->rowCount() > 0) {
                         $resultaatgoed = "{$naamrecept} is succesvol toegevoegd<br />";
+                        echo '<div class="popup" id="popup">' . $resultaatgoed . '</div>';
                     } else {
                         $resultaatfout .= "niet toegevoegd<br />";
+                        echo '<div class="popup1" id="popup1">' . $resultaatfout . '</div>';
                     }
 
 //                } catch (PDOException $e) {
@@ -200,4 +202,4 @@ if (empty($errors)) {
     }
 
 
- include './views/create_verwerk_view.php';
+ include 'detailCUD.php';

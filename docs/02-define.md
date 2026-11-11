@@ -14,8 +14,12 @@
 
 * De app moet responsive zijn (Mobile First).
 * We moeten een database bezitten met een gehele crud erin.
-* Nav Bar 
-* Met PHP bestanden werken
+* Nav Bar bovenin met home en admin knoppen.
+* Met PHP bestanden werken.
+* 4 recept voorbeelden.
+* Hij moet CRUD waardig zijn.
+
+
 
 
 **Should Haves:**
@@ -31,7 +35,8 @@
 
 * Hamburger menu voor mobiel
 * Local session gebruiken om terug te halen
-* Zoek balk
+* Zoek balk filter
+* validatie
 
 
 **Won't Haves (Buiten scope):**

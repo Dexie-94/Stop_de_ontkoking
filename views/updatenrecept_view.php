@@ -195,7 +195,7 @@
         </div>
         <div class="">
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Is je recept vegan?</label>
-            <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer" name="recept" type="checkbox" required><br><br>
+            <input id="recept" class="border-gray-900 border-2 m-4 w-6 h-6 accent-green-900 cursor-pointer"  name="vegan" value="<?= $recept['vegan'] ?> " type="checkbox"><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?</label><br><br>

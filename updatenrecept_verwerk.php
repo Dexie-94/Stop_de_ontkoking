@@ -10,11 +10,11 @@ $resultaatgoed='';
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $ID = $_POST["ID"];
-   // $recept_image = $_POST["recept_image"];
+  // $recept_image = $_POST["recept_image"];
     $naamrecept = $_POST["naamrecept"];
     $beschrijving = $_POST["beschrijving"];
     $tijd = $_POST["tijd"];
-    //$vegan = $_POST["vegan"];
+ //   $vegan = $_POST["vegan"];
     $ingredienten = $_POST["ingredienten"];
     $stappen = $_POST["stappen"];
 
@@ -53,48 +53,47 @@ if (preg_match("/^[a-zA-Z ]*$/", $_POST['naamrecept']) || preg_match("/^[a-zA-Z0
 
         }
 
-    } else {
+    } //else {
 
-        die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
+    //     die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
 
-    }
+    // }
 
-    if (empty($errors)) {
-        try {
-            // Query voor het invoegen van gegevens
-            $query = "UPDATE koken
-                      SET recept_image = :recept_image, naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
-                      WHERE ID = :ID";
+    try {
+        // Query voor het invoegen van gegevens
+        $query = "UPDATE koken
+                  SET recept_image = :recept_image, naamrecept = :naamrecept, beschrijving = :beschrijving, tijd = :tijd, vegan = :vegan, ingredienten = :ingredienten, stappen = :stappen
+                  WHERE ID = :ID";
 
-            // Bereid de query voor
-            $stmt = $PDO->prepare($query);
+        // Bereid de query voor
+        $stmt = $PDO->prepare($query);
 
-            // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
-            $stmt->execute([
-                ":recept_image" => $imageName,
-                ':naamrecept'  => $naamrecept,
-                ':beschrijving'  => $beschrijving,
-                ':tijd' => $tijd,
-                "vegan" => isset($_POST["vegan"]) ? 1 : 0,
-                ":ingredienten" => $_POST["ingredienten"],
-                ":stappen" => $_POST["stappen"],
-                ':ID'         => $ID
-            ]);
+        // Voer de query uit met de schoon gemaakte en gecontroleerde formuliergegevens
+        $stmt->execute([
+            ":recept_image" => $imageName,
+            ':naamrecept'  => $naamrecept,
+            ':beschrijving'  => $beschrijving,
+            ':tijd' => $tijd,
+            "vegan" => isset($_POST["vegan"]) ? 1 : 0,
+            ":ingredienten" => $ingredienten,
+            ":stappen" => $stappen,
+            ':ID'         => $ID
+        ]);
 
-            // Controleer of het is gelukt
-            if ($stmt->rowCount()) {
-                $resultaatgoed = "Het $naamrecept is aangepast!";
-            } else {
-                $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
-            }
+        // Controleer of het is gelukt
+        if ($stmt->rowCount()) {
+            $resultaatgoed =  "Het $naamrecept is succesvol aangepast!";
 
-        } catch (PDOException $e) {
-            // Foutafhandeling
-            $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
+
+            echo '<div class="popup" id="popup">' . $resultaatgoed . '</div>';
+
+        } else {
+            $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
+            echo '<div class="popup1" id="popup1">' . $resultaatfout . '</div>';
         }
     } else {
         // Voeg de foutmeldingen samen tot één string
         $resultaatfout = implode(", ", $errors);
     }
-    include "./views/create_verwerk_view.php";
+    include "detailCUD.php";
 }
