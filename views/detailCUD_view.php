@@ -6,18 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bewerken</title>
   <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
-
+    <script src="popup.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="taliwind.config.js" defer></script>
   <script src="overzicht_view.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
+
   <style>
     @font-face {
       font-family: recept;
       src: url("../assets/georgiab.ttf");
     }
+
 
     @font-face {
       font-family: tekst;
@@ -58,8 +60,8 @@
     }
     .whiteshadow {
       filter: drop-shadow(0 0 15px white);
-      width: 150px;
-      height: auto;
+      /*width: 150px;*/
+      /*height: auto;*/
     }
     .beneden{
        margin-top: auto;
@@ -102,6 +104,27 @@
         display: block;
         margin-left: auto;
     }
+    .popup {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background-color: darkgreen;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        z-index: 100;
+    }
+
+    .popup1 {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background-color: red;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        z-index: 100;
+    }
   </style>
 </head>
 
@@ -117,7 +140,7 @@
     <a href="./overzicht.php"
        class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
 
-        <div class="whiteshadow w-[clamp(1.5rem,4vw,2.5rem)]
+        <div class="whiteshadow w-[clamp(1.2rem,4vw,2.5rem)]
                     aspect-square bg-green-900
                     [mask-image:url('./assets/home-1-svgrepo-com.svg')]
                     [mask-size:contain]
@@ -125,7 +148,7 @@
                     [mask-position:center]">
         </div>
 
-        <span class="text-green-900 text-[clamp(1rem,1.5vw,1rem)]">
+        <span class="text-green-900 text-[clamp(1.5rem,1.5vw,1rem)]">
             Home
         </span>
     </a>
@@ -141,7 +164,7 @@
     <a href="./detailCUD.php"
        class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
 
-        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
+        <div class="whiteshadow w-[clamp(2.2rem,4vw,2.5rem)]
                     aspect-square bg-green-900
                     [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
                     [mask-size:contain]

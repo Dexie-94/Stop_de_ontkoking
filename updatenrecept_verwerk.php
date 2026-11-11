@@ -11,11 +11,11 @@ $resultaatgoed='';
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     $ID = $_POST["ID"];
-   // $recept_image = $_POST["recept_image"];
+  // $recept_image = $_POST["recept_image"];
     $naamrecept = $_POST["naamrecept"];
     $beschrijving = $_POST["beschrijving"];
     $tijd = $_POST["tijd"];
-    //$vegan = $_POST["vegan"];
+ //   $vegan = $_POST["vegan"];
     $ingredienten = $_POST["ingredienten"];
     $stappen = $_POST["stappen"];
 
@@ -44,11 +44,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         }
 
-    } else {
+    } //else {
 
-        die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
+    //     die("No file received. Upload error code: " . ($_FILES["recept_image"]["error"] ?? "no file key"));
 
-    }
+    // }
 
     try {
         // Query voor het invoegen van gegevens
@@ -66,21 +66,26 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             ':beschrijving'  => $beschrijving,
             ':tijd' => $tijd,
             "vegan" => isset($_POST["vegan"]) ? 1 : 0,
-            ":ingredienten" => $_POST["ingredienten"],
-            ":stappen" => $_POST["stappen"],
+            ":ingredienten" => $ingredienten,
+            ":stappen" => $stappen,
             ':ID'         => $ID
         ]);
 
         // Controleer of het is gelukt
         if ($stmt->rowCount()) {
-            $resultaatgoed = "Het $naamrecept is aangepast!";
+            $resultaatgoed =  "Het $naamrecept is succesvol aangepast!";
+
+
+            echo '<div class="popup" id="popup">' . $resultaatgoed . '</div>';
+
         } else {
             $resultaatfout = "Er is iets fout gegaan bij het aanpassen van het item.";
+            echo '<div class="popup1" id="popup1">' . $resultaatfout . '</div>';
         }
 
     } catch (PDOException $e) {
         // Foutafhandeling
         $resultaatfout = "Fout bij het toevoegen: " . $e->getMessage();
     }
-    include "./views/create_verwerk_view.php";
+    include "detailCUD.php";
 }
