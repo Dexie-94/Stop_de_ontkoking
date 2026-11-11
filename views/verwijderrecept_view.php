@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verwijderen</title>
+    <title>Recept</title>
     <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="taliwind.config.js" defer></script>
+    <script src="overzicht_view.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
 
     <style>
         @font-face {
@@ -59,29 +62,11 @@
             width: 150px;
             height: auto;
         }
-        .niks{
-            visibility: hidden;
-        }
-        .hoverrood:hover{
-            color: red;
-        }
-
-        .hoververwijder:hover{
-            scale: (1.5);
-            background-color: red;
-            transition: background-color 1s ease-in-out, transform 1s ease-out;
-            transition: scale 1s ease-in;
-        }
         .hoverknop:hover{
             scale: (1.5);
             background-color: #cb6526;
             transition: background-color 1s ease-in-out, transform 1s ease-out;
             transition: scale 1s ease-in;
-        }
-        .formulierbg{
-            background-image: url(./assets/achtergrond.svg);
-            background-position: end;
-            background-repeat: no-repeat;
         }
         .beneden{
             margin-top: auto;
@@ -90,22 +75,26 @@
             text-align: center;
             box-sizing: border-box;
         }
-        .filter1{
-            filter:drop-shadow(1px 1px 1px white);
-        }
-        .iconblad{
-            mask-image:url('../assets/leaf-icon.svg');
-            mask-size:contain;
-            mask-repeat:no-repeat;
-            mask-position:start;
-            background-color: darkgreen;
-            margin:20px;
+        .ingredientenul{
+            list-style-image: url('./assets/');
+            list-style: none;
+            padding-left: 0;
 
+        }
+        li::before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url("./assets/leaf-icon.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 8px;
         }
     </style>
 
 <body
-    class="min-h-screen achtergrond achter  flex flex-col "
+        class="min-h-screen achtergrond achter  flex flex-col "
 >
 
 <nav class="flex items-center justify-between border-b border-gray-900/40
@@ -140,7 +129,7 @@
     <a href="./detailCUD.php"
        class="flex flex-col items-center justify-center px-2 py-2 font-semibold">
 
-        <div class="whiteshadow w-[clamp(1.9em,4vw,2.5rem)]
+        <div class="whiteshadow w-[clamp(1.9rem,4vw,2.5rem)]
                     aspect-square bg-green-900
                     [mask-image:url('./assets/hat-chef-svgrepo-com.svg')]
                     [mask-size:contain]
@@ -163,7 +152,7 @@
     if ($aantalrecepten > 0) { ?>
     <?php foreach ($recepten as $recept) { ?>
     <div class="justify-items-center">
-        <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="<?= $recept['recept_image']?>">
+        <img class="w-[90%] h-[90%] bg-green-900/40 p-4  rounded-lg m-4" src="uploads/<?= htmlspecialchars($recept['recept_image']) ?>">
     </div>
 
     <div class=" rounded shadow m-4  ">
@@ -224,20 +213,18 @@
 
     <ul class="ingredientenul">
         <?php
-        $list = explode("/", $recept['ingredienten']);
+        $list = explode("-", $recept['ingredienten']);
         foreach ($list as $item) { ?>
-            <li class="iconblad text-gray-900"><?= htmlspecialchars(trim($item)) ?></li>
+            <li><?= htmlspecialchars(trim($item)) ?></li>
         <?php } ?>
     </ul>
 
-    </div>
-
+</div>
 
 
 
 
 <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
-
 
 
     <div class="border-2 solid mb-8 rounded-lg p-2 border-black">
@@ -249,6 +236,7 @@
     <a href="./overzicht.php"
        class="bg-green-900 text-white p-3 sm:p-4 justify-center items-center flex hoverknop rounded-lg text-[clamp(1rem,1.5vw,1.3rem)] cursor-pointer tekst w-full sm:w-auto">
 
+
         <span class="h-8 sm:h-10 bg-white w-8 shrink-0
             [mask-image:url('./assets/flip-backward-svgrepo-com.svg')]
             [mask-size:contain]
@@ -258,9 +246,6 @@
 
         Terug
     </a>
-
-
-
 </div>
 
 
@@ -274,12 +259,10 @@
 <?php } ?>
 
 
-
-
 <footer
-    class="max-w-full mx-auto font-semibold bg-oklch(27.4% 0.072 132.109) w-full  beneden sm:mt-4 bottom-0 left-0 right-0">
+        class="max-w-full mx-auto font-semibold bg-oklch(27.4% 0.072 132.109) w-full  beneden sm:mt-4 bottom-0 left-0 right-0">
     <p
-        class="text-[clamp(1.15rem,1.5vw,1.5rem)] flex justify-center text-green-900">
+            class="text-[clamp(1.15rem,1.5vw,1.5rem)] flex justify-center text-green-900">
         <br /><br /><br />&copy;Food 4 Thought 2026
     </p>
 </footer>

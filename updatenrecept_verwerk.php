@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $tijd >= 180
         ) {
             throw new Exception(
-                "De bereidingstijd moet tussen 1 en 59 minuten liggen!"
+                "De bereidingstijd moet tussen 1 en 180` minuten liggen!"
             );
         }
 

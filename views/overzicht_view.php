@@ -153,10 +153,10 @@
       <?php foreach ($recepten as $recept) { ?>
    <div
 
-        class="grid font-band mx-auto w-[95%] mb-6  border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
+        class="grid font-band mx-auto w-[95%] mb-6  achtergrond border-2 border-solid shadow-xl rounded-3xl border-gray-400/30">
 
         <div
-          class="flex justify-center overflow-hidden  w-full  md:w-md lg:w-lg">
+          class="flex justify-center overflow-hidden w-full  md:w-md lg:w-lg">
           <img
                   src="uploads/<?= htmlspecialchars($recept['recept_image']) ?>"
                   alt="eten"

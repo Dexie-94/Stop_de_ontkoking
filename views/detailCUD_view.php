@@ -200,7 +200,7 @@
       <?php foreach ($recepten as $recept) { ?>
     <!-- dit is de img -->
     <div
-      class="grid  mx-auto border-2 w-[95%] mb-6  border-solid shadow-xl rounded-3xl border-gray-400/30">
+      class="grid  mx-auto border-2 w-[95%] mb-6 achtergrond border-solid shadow-xl rounded-3xl border-gray-400/30">
       <div
 
         <div
@@ -213,7 +213,7 @@
 
 
       <!-- dit is de tekst -->
-      <div class=" px-4 py-4 ">
+      <div class=" px-4 py-4  ">
 
         <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] tekst font-bold">
             <?= $recept['naamrecept'] ?>
