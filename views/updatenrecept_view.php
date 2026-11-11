@@ -179,11 +179,11 @@
 
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Vul de naam van je recept in:</label><br>
-            <input id="naam" class="border-gray-900 border-2 m-4" name="naamrecept" type="text" ><br><br>
+            <input id="naam" class="border-gray-900 border-2 m-4" name="naamrecept" value="<?= $recept['naamrecept'] ?>"type="text" ><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Geef in twee regels een omschrijving over het recept:</label><br>
-            <input id="beschrijving" class="border-gray-900 border-2 m-4" name="beschrijving" type="text"><br><br>
+            <input id="beschrijving" class="border-gray-900 border-2 m-4" name="beschrijving" value="<?= $recept['beschrijving'] ?>" type="text"><br><br>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Upload hier een foto van je recept:</label><br>
@@ -191,7 +191,7 @@
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Hoeveel minuten ben je in totaal kwijt?</label>
-            <input id="min" class="border-gray-900 border-2 m-4" name="tijd" type="text" ><br><br>
+            <input id="min" class="border-gray-900 border-2 m-4" name="tijd" value="<?= $recept['tijd'] ?>" type="text" ><br><br>
         </div>
         <div class="">
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Is je recept vegan?</label>
@@ -199,11 +199,11 @@
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Welke ingredienten heb je nodig voor je recept?</label><br><br>
-            <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" name="ingredienten" ></textarea>
+            <textarea id="ingredient" class="border-gray-900 border-2 m-4  xs:cols-37 w-[90%] " rows="8" cols="90" placeholder="<?= $recept['ingredienten'] ?>" name="ingredienten" ></textarea>
         </div>
         <div>
             <label class="text-[clamp(1.1rem,2vw,1.5rem)]  tekst">Leg hier in stappen uit hoe je het recept bereid</label><br><br>
-            <textarea id="stappen" name="stappen" class="border-gray-900 border-2 m-4 xs:cols-37 w-[90%] "  rows="8" cols="90" ></textarea>
+            <textarea id="stappen" name="stappen" class="border-gray-900 border-2 m-4 xs:cols-37 w-[90%] "  placeholder="<?= $recept['stappen'] ?>" rows="8" cols="90" ></textarea>
         </div>
 
         <div class="flex flex-col sm:flex-row justify-around items-center gap-4 mt-12 w-full px-4">
