@@ -8,7 +8,7 @@
     <title>Verwerk van gegevens</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="taliwind.config.js" defer></script>
+    <script src="tailwind.config.js" defer></script>
 </head>
 <style>
     #fout{

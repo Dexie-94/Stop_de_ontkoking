@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="taliwind.config.js" defer></script>
+    <script src="tailwind.config.js" defer></script>
     <style>
         @font-face {
             font-family: recept;
@@ -25,7 +25,7 @@
             font-family: recept;
         }
         .achter{
-            background-image: url(./assets/achtergrong.png);
+            background-image: url(./assets/achtergrond.png);
             background-attachment: fixed;
             background-position: center ;
             background-repeat: no-repeat;

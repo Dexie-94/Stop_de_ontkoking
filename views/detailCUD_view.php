@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
     <script src="popup.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="taliwind.config.js" defer></script>
+  <script src="tailwind.config.js" defer></script>
   <script src="overzicht_view.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
@@ -51,7 +51,7 @@
       color: #cb6526;
     }
     .achter{
-        background-image: url(./assets/achtergrong.png);
+        background-image: url(./assets/achtergrond.png);
         background-attachment: fixed;
         
         background-position: center ;

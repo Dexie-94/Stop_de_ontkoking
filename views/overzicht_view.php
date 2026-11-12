@@ -7,8 +7,8 @@
   <title>Food 4 Thought</title>
   <link rel="icon" type="image/svg+xml" href="./assets/food4thought_logo.png" />
 
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  <script src="taliwind.config.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js" defer></script>
   <script src="overzicht_view.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js" defer></script>
@@ -48,10 +48,10 @@
     body::selection {
       color: #cb6526;
     }
-    .achter{
-        background-image: url(./assets/achtergrong.png);
+    .achter {
+        background-image: url("./assets/achtergrond.png");
         background-attachment: fixed;
-        background-position: center ;
+        background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -81,8 +81,9 @@
 </head>
 
 <body
-  class="min-h-screen achter flex flex-col "
+  class="min-h-screen flex flex-col "
   >
+<div class="achter">
 
 <nav class="flex items-center justify-between border-b border-gray-900/40
             px-3 sm:px-6 bg-gray-100/30 backdrop-blur-xs
@@ -201,7 +202,7 @@
 
             <div class="flex">
               <a href="./detail.php?id=<?= $recept["ID"] ?>" class="h-12 hoverknop w-12 bg-green-900 cursor-pointer
-           [mask-image:url('./assets/round-arrow-right-svgrepo-com.svg')]
+           [mask-image:url('./assets/circle-arrow-right-svgrepo-com.svg')]
            [mask-size:contain]
            [mask-repeat:no-repeat]
            [mask-position:start] "></a>
@@ -232,6 +233,7 @@
       <br /><br /><br />&copy;Food 4 Thought 2026
     </p>
 </footer>
+</div>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
